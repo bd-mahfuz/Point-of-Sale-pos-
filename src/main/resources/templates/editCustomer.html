@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+</head>
+<body>
+    <div th:fragment="editCustomer">
+        <div class="container">
+            <div class="row">
+                <div th:if="${#strings.isEmpty(updateMessage)!=true}">
+                    <h4 th:text="${updateMessage}" class="message"></h4>
+                </div>
+                <div class="col-md-offset-2 col-md-8">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <strong>Edit Customer Info</strong>
+                        </div>
+                        <div class="panel-body">
+                            <form id="customerForm" th:action="@{/user/updateCustomer}" method="post" th:object="${customer}" id="customerForm">
+                                <div class="form-group">
+                                    <p class="col-md-4" for="name">Customer Name:</p>
+                                    <div class="col-md-8">
+                                        <input type="text"
+                                               class="form-control" th:field="*{name}" id="customerName" placeholder="Customer name" required="required"/>
+                                    </div>
+                                </div>
+                                &#160;
+                                <div class="form-group">
+                                    <p class="col-md-4" for="companyName">Company Name:</p>
+                                    <div class="col-md-8">
+                                        <input type="text"
+                                               class="form-control" th:field="*{companyName}" id="CustomercompanyName" placeholder="Company Name" required="required"/>
+                                    </div>
+                                </div>
+                                &#160;
+                                <div class="form-group">
+                                    <p class="col-md-4" for="address">Address:</p>
+                                    <div class="col-md-8">
+                                        <textarea id="customerAddress" rows="2" cols="5" th:field="*{address}" class="form-control" placeholder="" required="required"></textarea>
+                                    </div>
+                                </div>
+                                &#160;
+                                <div class="form-group">
+                                    <p class="col-md-4" for="phone">Phone:</p>
+                                    <div class="col-md-8">
+                                        <input type="text"
+                                               class="form-control" th:field="*{phone}" id="customerPhone" placeholder="Phone" required="required"/>
+                                    </div>
+                                </div>
+                                &#160;
+                                <div class="form-group">
+                                    <p class="col-md-4" for="fax">Fax:</p>
+                                    <div class="col-md-8">
+                                        <input type="text"
+                                               class="form-control" th:field="*{fax}" id="customerFax" placeholder="Fax" required="required"/>
+                                    </div>
+                                </div>
+                                &#160;
+                                <div class="form-group">
+                                    <p class="col-md-4" for="mobile">Mobile:</p>
+                                    <div class="col-md-8">
+                                        <input type="text"
+                                               class="form-control" th:field="*{mobile}" id="csutomerMobile" placeholder="Mobile" required="required"/>
+                                    </div>
+                                </div>
+                                &#160;
+                                <div class="form-group">
+                                    <p class="col-md-4" for="web">Web:</p>
+                                    <div class="col-md-8">
+                                        <input type="text"
+                                               class="form-control" th:field="*{web}" id="customerWeb" placeholder="Web" required="required"/>
+                                    </div>
+                                </div>
+                                &#160;
+                                <div class="form-group">
+                                    <p class="col-md-4" for="email">Email:</p>
+                                    <div class="col-md-8">
+                                        <input type="text"
+                                               class="form-control" th:field="*{email}" id="customerEmail" placeholder="Email" required="required"/>
+                                    </div>
+                                </div>
+                                &#160;
+                                <div class="form-group">
+                                    <p class="col-md-4" for="payVat">VAT Included:</p>
+                                    <div class="col-md-8">
+                                        <label class="radio-inline">
+                                            <input type="radio" th:field="*{payVat}" id="yesVat" name="yes" value="yes"/>Yes
+                                        </label>
+                                        <label class="radio-inline">
+                                            <input type="radio" th:field="*{payVat}" id="noVat" name="no" value="No"/>No
+                                        </label>
+                                    </div>
+                                </div>
+                                <div id="payVat" class="form-group vatSelector" style="display:none">
+                                    <p class="col-md-4 control-label" for="payVat">Who Pay VAT:</p>
+                                    <div class="col-md-8">
+                                        <select id="vatPayer" name="vatPayer" class="form-control" required="required">
+                                            <option value="none" selected="selected">Select One</option>
+                                            <option value="Customer">Customer</option>
+                                            <option value="Company">Company</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                &#160;
+                                <div class="form-group">
+                                    <p class="col-md-4" for="tax">TAX Included:</p>
+                                    <div class="col-md-8">
+                                        <label class="radio-inline">
+                                            <input type="radio" th:field="*{tax}" value="true" name="optradio"/>Yes
+                                        </label>
+                                        <label class="radio-inline">
+                                            <input type="radio" th:field="*{tax}" value="false" name="optradio"/>No
+                                        </label>
+                                    </div>
+                                </div>
+                                &#160;
+                                <div class="form-group">
+                                    <p class="col-md-4" for="email">TP Invoice Format:</p>
+                                    <div class="col-md-8">
+                                        <input type="text"
+                                               class="form-control" th:field="*{tpInvoice}" id="customerIpInvoice" placeholder="TP Invoice Format" required="required"/>
+                                    </div>
+                                </div>
+                                &#160;
+                                <div class="form-group">
+                                    <p class="col-md-4" for="email">CE Invoice Format:</p>
+                                    <div class="col-md-8">
+                                        <input type="text"
+                                               class="form-control" th:field="*{ceInvoice}" id="customerCeInvoice" placeholder="CE Invoice Format" required="required"/>
+                                        <input type="text"
+                                               class="form-control" th:field="*{id}"/>       
+                                    </div>
+                                </div>
+                                &#160;
+                                <div class="form-group">
+                                    <p class="col-md-4" for="note">Notes:</p>
+                                    <div class="col-md-8">
+                                        <textarea id="customerNote" rows="2" cols="5" th:field="*{note}" class="form-control" placeholder="Notes" required="required"></textarea>
+                                    </div>
+                                </div>
+                                &#160;
+                                <div class="form-group">
+                                    <div class="col-md-offset-4 col-md-12">
+                                        <input type="submit" class="btn btn-primary" value="Add"/>
+                                        <a href="/user/setup" class="btn btn-info">Back</a>
+                                    </div>
+                                </div>
+                                &#160;
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

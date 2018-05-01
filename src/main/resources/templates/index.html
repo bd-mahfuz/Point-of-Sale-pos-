@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" name="context-path"></meta>
+<title>POS</title>
+<link rel="stylesheet" type="text/css"
+	href="../../../webjars/bootstrap/3.3.7/css/bootstrap.min.css" />
+	
+<link rel="stylesheet" type="text/css" href="/css/datatables.css"/>
+<link rel="stylesheet" type="text/css" href="/css/bootstrap-select.css"/>
+
+<!-- linking with custom css -->
+<link rel="stylesheet" type="text/css" href="../../../webjars/font-awesome/4.7.0/css/font-awesome.min.css"/>
+<link rel="stylesheet" type="text/css" href="/css/custom.css" />
+
+
+
+</head>
+<body>
+	<div th:replace="fragments/header :: header" />
+	<div class="wrapper">
+	
+		<div class="content">
+			<div th:if="${userClickHome == true}">
+				<div th:replace="home :: home"></div>
+			</div>
+			
+			<div th:if="${userClickSetup == true}">
+				<div th:replace="setup :: setup"></div>
+			</div>
+			
+			<div th:if="${userClickEditSupplier == true}">
+				<div th:replace="editSupplier :: editSupplier"></div>
+			</div>
+
+			<div th:if="${userClickEditCustomer == true}">
+				<div th:replace="editCustomer :: editCustomer"></div>
+			</div>
+			
+			<div th:if="${userClickEditProductItem == true}">
+				<div th:replace="editProductItem :: editProductItem"></div>
+			</div>
+
+			<div th:if="${userClickEditItemModel == true}">
+				<div th:replace="editItemModel :: editItemModel"></div>
+			</div>
+
+			<div th:if="${userClickEditItemModelPrice == true}">
+				<div th:replace="editItemModelPrice :: editItemModelPrice"></div>
+			</div>
+
+			<div th:if="${userClickPurchase == true}">
+				<div th:replace="purchase :: parchase"></div>
+			</div>
+		</div>
+		
+	
+	<span th:replace="fragments/footer :: footer"></span>
+	</div>
+	
+	<!-- jquery -->
+	<script type="text/javascript"
+		src="../../../webjars/jquery/1.11.1/jquery.js"></script>
+	<!-- jquery validator -->
+	<script type="text/javascript" src="../../../js/jquery.validate.js"></script>
+	<!-- data table -->
+	<script type="text/javascript" src="/js/datatables.js"></script>
+	<!-- custom select -->
+	<script type="text/javascript" src="/js/bootstrap-select.js"></script>
+	<!-- bootstrap -->
+	<script type="text/javascript"
+		src="../../../webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<!-- bootbox -->	
+	<script type="text/javascript" src="../../../js/bootbox.min.js"></script>
+	<script type="text/javascript" src="../../../js/customValidator.js"></script>
+	<script type="text/javascript" src="../../../js/custom.js"></script>
+</body>
+</html>

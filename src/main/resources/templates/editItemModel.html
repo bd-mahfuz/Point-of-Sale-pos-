@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"></meta>
+</head>
+<body>
+    <div th:fragment="editItemModel">
+        <div class="container">
+            <div class="row">
+                <div th:if="${#strings.isEmpty(updateMessage)!=true}">
+                    <h4 th:text="${updateMessage}" class="message"></h4>
+                </div>
+                <div class="col-md-offset-2 col-md-8">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading changeCursor">
+                            <strong>Update Item Model Info</strong>
+                        </div>
+                        <div class="panel-body">
+                            <form id="itemModelForm" th:action="@{/user/update/itemModel}" method="post" th:object="${itemModel}">
+                                <div class="form-group">
+                                    <p class="col-md-4" for="name">Item Name:</p>
+                                    <div class="col-md-8">
+                                        <select class="selectpicker form-control" th:field="*{productItem.id}" data-live-search="true">
+                                            <option th:each="product : ${productList}" th:value="${product.id}" th:text="${product.productItemName}"></option>
+                                        </select>
+                                    </div>
+                                </div>
+                                &#160;
+                                <div class="form-group">
+                                    <p class="col-md-4" for="name">Model Code:</p>
+                                    <div class="col-md-8">
+                                        <input type="text"
+                                               class="form-control" th:field="*{modelCode}" placeholder="Model code"/>
+                                    </div>
+                                </div>
+                                &#160;
+                                <div class="form-group">
+                                    <p class="col-md-4" for="name">Model Type:</p>
+                                    <div class="col-md-8">
+                                        <select th:field="*{modelType}" class="form-control">
+                                            <option value="With MAC">With MAC</option>
+                                            <option value="Non MAC">Non MAC</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                &#160;
+                                <div class="form-group">
+                                    <p class="col-md-4" for="address">Notes:</p>
+                                    <div class="col-md-8">
+                                        <textarea rows="2" cols="5" th:field="*{notes}" class="form-control" placeholder="Notes"></textarea>
+                                    </div>
+                                </div>
+                                &#160;
+                                <div class="form-group">
+                                    <div class="col-md-offset-4 col-md-12">
+                                        <input type="hidden" class="btn btn-primary" th:field="*{id}"/>
+                                        <input type="submit" class="btn btn-primary" value="Update"/>
+                                        <a href="/user/setup" class="btn btn-info">Back</a>
+                                    </div>
+                                </div>
+                                &#160;
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

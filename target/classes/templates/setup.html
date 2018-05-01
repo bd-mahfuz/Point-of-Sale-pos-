@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+</head>
+<body>
+	<div th:fragment="setup">
+		<div th:if="${#strings.isEmpty(message)!=true}">
+			<h4 th:text="${message}" class="message"></h4>
+		</div>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6">
+<!-- ...........................Supplier part start here..................................... -->
+					<div class="panel panel-default">
+						<div class="panel-heading changeCursor" id="customSlide"
+							data-toggle="tooltip" data-placement="top"
+							title="Click here to expand or collapse">
+							<strong>Add Supplier Info</strong>
+						</div>
+						<div class="panel-body panelHidden" id="panelHidden">
+						<form th:action="@{/user/addSupplier}" method="post" th:object="${supplier}" id="supplierForm">
+							<div class="form-group">
+								<p class="col-md-4" for="name">Supplier Name:</p> 
+								<div class="col-md-8">
+									<input type="text"
+									class="form-control" th:field="*{name}" placeholder="Supplier name"/>
+								</div>
+							</div>
+							&#160;
+							<div class="form-group">
+								<p class="col-md-4" for="companyName">Company Name:</p> 
+								<div class="col-md-8">
+									<input type="text"
+									class="form-control" th:field="*{companyName}" placeholder="Company Name" required="required"/>
+								</div>
+							</div>
+							&#160;
+							<div class="form-group">
+								<p class="col-md-4" for="address">Address:</p> 
+								<div class="col-md-8">
+									<textarea th:field="*{address}" rows="2" cols="5" class="form-control" placeholder="Address" required="required"></textarea>
+								</div>
+							</div>
+							&#160;
+							<div class="form-group">
+								<p class="col-md-4" for="phone">Phone:</p> 
+								<div class="col-md-8">
+									<input type="text"
+									class="form-control" th:field="*{phone}" placeholder="Phone" required="required"/>
+								</div>
+							</div>
+							&#160;
+							<div class="form-group">
+								<p class="col-md-4" for="fax">Fax:</p> 
+								<div class="col-md-8">
+									<input type="text"
+									class="form-control" th:field="*{fax}" placeholder="Fax" required="required"/>
+								</div>
+							</div>
+							&#160;
+							<div class="form-group">
+								<p class="col-md-4" for="mobile">Mobile:</p> 
+								<div class="col-md-8">
+									<input type="text"
+									class="form-control" th:field="*{mobile}" placeholder="Mobile" required="required"/>
+								</div>
+							</div>
+							&#160;
+							<div class="form-group">
+								<p class="col-md-4" for="web">Web:</p> 
+								<div class="col-md-8">
+									<input type="text"
+									class="form-control" th:field="*{web}" placeholder="Web" required="required"/>
+								</div>
+							</div>
+							&#160;
+							<div class="form-group">
+								<p class="col-md-4" for="email">Email:</p> 
+								<div class="col-md-8">
+									<input type="text"
+									class="form-control" th:field="*{email}" placeholder="Email" required="required"/>
+								</div>
+							</div>
+							&#160;
+							<div class="form-group">
+								<p class="col-md-4" for="note">Notes:</p> 
+								<div class="col-md-8">
+									<textarea th:field="*{notes}" rows="2" cols="5" class="form-control" placeholder="Notes" required="required"></textarea>
+								</div>
+							</div>
+							&#160;
+							<div class="form-group"> 
+								<div class="col-md-offset-4 col-md-12">
+									<input type="submit" class="btn btn-primary" id="submit-button" value="Add"/>
+									<input type="reset" class="btn btn-info" value="Reset"/>
+									<input type="submit" class="btn btn-warning" value="Close"/>
+								</div>
+							</div>
+							&#160;
+							</form>
+						</div>
+						
+					</div>
+<!-- ..........................Supplier part end here........................... -->					
+					
+<!-- ..........................Customer part start here.................. -->					
+					<div class="panel panel-default">
+						<div class="panel-heading changeCursor" id="customerSlide"
+							data-toggle="tooltip" data-placement="top"
+							title="Click here to expand or collapse">
+							<strong>Add Customer Info</strong>
+						</div>
+						<div class="panel-body panelHidden" id="customerPanelHidden">
+						<form action="/user/addCustomer" method="post" th:object="${customer}" id="customerForm">
+							<div class="form-group">
+								<p class="col-md-4" for="name">Customer Name:</p>
+								<div class="col-md-8">
+									<input type="text"
+									class="form-control" th:field="*{name}" id="customerName" placeholder="Customer name" required="required"/>
+								</div>
+							</div>
+							&#160;
+							<div class="form-group">
+								<p class="col-md-4" for="companyName">Company Name:</p>
+								<div class="col-md-8">
+									<input type="text"
+									class="form-control" th:field="*{companyName}" id="CustomercompanyName" placeholder="Company Name" required="required"/>
+								</div>
+							</div>
+							&#160;
+							<div class="form-group">
+								<p class="col-md-4" for="address">Address:</p>
+								<div class="col-md-8">
+									<textarea id="customerAddress" rows="2" cols="5" th:field="*{address}" class="form-control" placeholder="" required="required"></textarea>
+								</div>
+							</div>
+							&#160;
+							<div class="form-group">
+								<p class="col-md-4" for="phone">Phone:</p>
+								<div class="col-md-8">
+									<input type="text"
+									class="form-control" th:field="*{phone}" id="customerPhone" placeholder="Phone" required="required"/>
+								</div>
+							</div>
+							&#160;
+							<div class="form-group">
+								<p class="col-md-4" for="fax">Fax:</p>
+								<div class="col-md-8">
+									<input type="text"
+									class="form-control" th:field="*{fax}" id="customerFax" placeholder="Fax" required="required"/>
+								</div>
+							</div>
+							&#160;
+							<div class="form-group">
+								<p class="col-md-4" for="mobile">Mobile:</p>
+								<div class="col-md-8">
+									<input type="text"
+									class="form-control" th:field="*{mobile}" id="csutomerMobile" placeholder="Mobile" required="required"/>
+								</div>
+							</div>
+							&#160;
+							<div class="form-group">
+								<p class="col-md-4" for="web">Web:</p>
+								<div class="col-md-8">
+									<input type="text"
+									class="form-control" th:field="*{web}" id="customerWeb" placeholder="Web" required="required"/>
+								</div>
+							</div>
+							&#160;
+							<div class="form-group">
+								<p class="col-md-4" for="email">Email:</p>
+								<div class="col-md-8">
+									<input type="text"
+									class="form-control" th:field="*{email}" id="customerEmail" placeholder="Email" required="required"/>
+								</div>
+							</div>
+							&#160;
+							<div class="form-group">
+								<p class="col-md-4" for="payVat">VAT Included:</p>
+								<div class="col-md-8">
+									 <label class="radio-inline">
+									     <input type="radio" th:field="*{payVat}" id="yesVat" name="yes" value="yes"/>Yes
+									  </label>
+									  <label class="radio-inline">
+									     <input type="radio" th:field="*{payVat}" id="noVat" name="no" value="No"/>No
+									  </label>
+								</div>
+							</div>
+							<div id="payVat" class="form-group vatSelector" style="display:none">
+								<p class="col-md-4 control-label" for="payVat">Who Pay VAT:</p>
+								<div class="col-md-8">
+									 <select id="vatPayer" name="vatPayer" class="form-control" required="required">
+									 	<option value="none" selected="selected">Select One</option>
+									 	<option value="Customer">Customer</option>
+									 	<option value="Company">Company</option>
+									 </select>
+								</div>
+							</div>
+							&#160;
+							<div class="form-group">
+								<p class="col-md-4" for="tax">TAX Included:</p>
+								<div class="col-md-8">
+									<label class="radio-inline">
+									     <input type="radio" th:field="*{tax}" value="true" name="optradio"/>Yes
+									  </label>
+									  <label class="radio-inline">
+									     <input type="radio" th:field="*{tax}" value="false" name="optradio"/>No
+									  </label>
+								</div>
+							</div>
+							&#160;
+							<div class="form-group">
+								<p class="col-md-4" for="email">TP Invoice Format:</p>
+								<div class="col-md-8">
+									<input type="text"
+									class="form-control" th:field="*{tpInvoice}" id="customerIpInvoice" placeholder="TP Invoice Format" required="required"/>
+								</div>
+							</div>
+							&#160;
+							<div class="form-group">
+								<p class="col-md-4" for="email">CE Invoice Format:</p>
+								<div class="col-md-8">
+									<input type="text"
+									class="form-control" th:field="*{ceInvoice}" id="customerCeInvoice" placeholder="CE Invoice Format" required="required"/>
+								</div>
+							</div>
+							&#160;
+							<div class="form-group">
+								<p class="col-md-4" for="note">Notes:</p>
+								<div class="col-md-8">
+									<textarea id="customerNote" rows="2" cols="5" th:field="*{note}" class="form-control" placeholder="Notes" required="required"></textarea>
+								</div>
+							</div>
+							&#160;
+							<div class="form-group">
+								<div class="col-md-offset-4 col-md-12">
+									<input type="submit" class="btn btn-primary" value="Add"/>
+									<input type="reset" class="btn btn-info" value="Reset"/>
+									<input type="submit" class="btn btn-warning" value="Close"/>
+								</div>
+							</div>
+							&#160;
+							</form>
+						</div>
+						
+					</div>
+<!-- .......................Customer part end here .................................... -->	
+
+<!-- ................................Product item part start here.................. -->					
+					<div class="panel panel-default">
+						<div class="panel-heading changeCursor" id="productItemSlide"
+							data-toggle="tooltip" data-placement="top"
+							title="Click here to expand or collapse">
+							<strong>Add Product Item Info</strong>
+						</div>
+						<div class="panel-body panelHidden" id="productItemPanelHidden">
+						<form id="productItemForm" th:action="@{/user/add/productItem}" method="post" th:object="${productItem}">
+							<div class="form-group">
+								<p class="col-md-4" for="name">Product Item:</p> 
+								<div class="col-md-8">
+									<input type="text"
+									class="form-control" th:field="*{productItemName}" placeholder="Product item name"/>
+								</div>
+							</div>
+							&#160;
+							<div class="form-group">
+								<p class="col-md-4" for="address">Notes:</p> 
+								<div class="col-md-8">
+									<textarea rows="2" cols="5" th:field="*{notes}"  class="form-control" placeholder="Notes"></textarea>
+								</div>
+							</div>
+							&#160;
+							<div class="form-group"> 
+								<div class="col-md-offset-4 col-md-12">
+									<input type="submit" class="btn btn-primary" value="Add"/>
+									<input type="reset" class="btn btn-info" value="Reset"/>
+									<input type="submit" class="btn btn-warning" value="Close"/>
+								</div>
+							</div>
+							&#160;
+							</form>
+						</div>
+						
+					</div>
+<!-- .......................product item part end here .................................... -->
+
+
+
+<!-- .......................Item model part start here .................................... -->
+					<div class="panel panel-default">
+						<div class="panel-heading changeCursor" id="itemModelSlide"
+							 data-toggle="tooltip" data-placement="top"
+							 title="Click here to expand or collapse">
+							<strong>Add Item Model Info</strong>
+						</div>
+						<div class="panel-body panelHidden" id="itemModelPanelHidden">
+							<form id="itemModelForm" th:action="@{/user/add/itemModel}" method="post" th:object="${itemModel}">
+								<div class="form-group">
+									<p class="col-md-4" for="name">Item Name:</p>
+									<div class="col-md-8">
+										<select class="selectpicker form-control" th:field="*{productItem.id}" data-live-search="true">
+											<option th:each="product : ${productList}" th:value="${product.id}" th:text="${product.productItemName}"></option>
+										</select>
+									</div>
+								</div>
+								&#160;
+								<div class="form-group">
+									<p class="col-md-4" for="name">Model Code:</p>
+									<div class="col-md-8">
+										<input type="text"
+											   class="form-control" th:field="*{modelCode}" placeholder="Model code"/>
+									</div>
+								</div>
+								&#160;
+								<div class="form-group">
+									<p class="col-md-4" for="name">Model Type:</p>
+									<div class="col-md-8">
+										<select th:field="*{modelType}" class="form-control">
+											<option value="With MAC">With MAC</option>
+											<option value="Non MAC">Non MAC</option>
+										</select>
+									</div>
+								</div>
+								&#160;
+								<div class="form-group">
+									<p class="col-md-4" for="address">Notes:</p>
+									<div class="col-md-8">
+										<textarea rows="2" cols="5" th:field="*{notes}" class="form-control" placeholder="Notes"></textarea>
+									</div>
+								</div>
+								&#160;
+								<div class="form-group">
+									<div class="col-md-offset-4 col-md-12">
+										<input type="submit" class="btn btn-primary" value="Add"/>
+										<input type="reset" class="btn btn-info" value="Reset"/>
+									</div>
+								</div>
+								&#160;
+							</form>
+						</div>
+
+					</div>
+					<!-- .......................Item model part end here .................................... -->
+
+					<!-- .......................Item model price part start here .................................... -->
+					<div class="panel panel-default">
+						<div class="panel-heading changeCursor" id="itemModelPriceSlide"
+							 data-toggle="tooltip" data-placement="top"
+							 title="Click here to expand or collapse">
+							<strong>Add Item Model Price Info</strong>
+						</div>
+						<div class="panel-body panelHidden" id="itemModelPricePanelHidden">
+							<form id="itemModelPriceForm" th:action="@{/user/add/itemModelPrice}" method="post"
+								  th:object="${itemModelPrice}">
+								<div class="form-group">
+									<p class="col-md-4" for="name">Item Name:</p>
+									<div class="col-md-8">
+										<select th:field="*{productItem.id}" id="productItemId" class="selectpicker form-control" data-live-search="true">
+											<option value="1">-Select Product Item-</option>
+											<option th:each="product : ${productList}" th:value="${product.id}"
+													th:text="${product.productItemName}"></option>
+										</select>
+									</div>
+								</div>
+								&#160;
+								<div class="form-group">
+									<p class="col-md-4" for="name">Model Code:</p>
+									<div class="col-md-8">
+										<select th:field="*{itemModel.id}" class="form-control" id="itemModels">
+											<!-- option value will come from ajax -->
+										</select>
+									</div>
+								</div>
+								&#160;
+								<div class="form-group">
+									<p class="col-md-4" for="name">Buy Price:</p>
+									<div class="col-md-8">
+										<input type="text" th:field="*{buyPrice}"
+											   class="form-control" placeholder="Buy price"/>
+									</div>
+								</div>
+								&#160;
+								<div class="form-group">
+									<p class="col-md-4" for="name">Sell Price:</p>
+									<div class="col-md-8">
+										<input type="text" th:field="*{sellPrice}"
+											   class="form-control" placeholder="Sell price"/>
+									</div>
+								</div>
+								&#160;
+								<div class="form-group">
+									<p class="col-md-4" for="address">Notes:</p>
+									<div class="col-md-8">
+										<textarea th:field="*{notes}" rows="2" cols="5" class="form-control" placeholder="Notes"></textarea>
+									</div>
+								</div>
+								&#160;
+								<div class="form-group">
+									<div class="col-md-offset-4 col-md-12">
+										<input type="submit" class="btn btn-primary" value="Add"/>
+										<input type="reset" class="btn btn-info" value="Reset"/>
+									</div>
+								</div>
+								&#160;
+							</form>
+						</div>
+
+					</div>
+					<!-- .......................Item model price part end here .................................... -->
+
+
+				</div>
+
+
+
+
+<!--................................ Table view ................................-->
+				<div class="col-md-6">
+
+					<div class="panel panel-default">
+						<div class="panel-heading changeCursor" id="customSlide2"
+							data-toggle="tooltip" data-placement="top"
+							title="Click here to expand or collapse">
+							<strong>View Suppliers Info</strong>
+							
+						</div>
+						<div class="panel-body panelHidden" id="panelHidden2">
+							<table id="supplierInfoTable" class="table table-bordered table-responsive" style="width: 100%">
+								<thead>
+									<tr>
+										<th  class="autoClick">SL. No</th>
+										<th>Supplier Name</th>
+										<th>Company Name</th>
+										<th>Action</th>
+									</tr>
+								</thead>
+							</table>
+						</div>
+					</div>
+					
+					<div class="panel panel-default">
+						<div class="panel-heading changeCursor" id="viewCustomerInfo"
+							data-toggle="tooltip" data-placement="top"
+							title="Click here to expand or collapse">
+							<strong>View Customer Info</strong>
+						</div>
+						<div class="panel-body panelHidden" id="viewCustomerPanel">
+							<table id="customerInfoTable" class="table table-bordered table-responsive" style="width: 100%">
+								<thead>
+									<tr >
+										<th>SL. No</th>
+										<th  class="autoClick">Supplier Name</th>
+										<th>Company Name</th>
+										<th>Action</th>
+									</tr>
+								</thead>
+							</table>
+						</div>
+					</div>
+					
+					<div class="panel panel-default">
+						<div class="panel-heading changeCursor" id="viewProductItemSlide"
+							data-toggle="tooltip" data-placement="top"
+							title="Click here to expand or collapse">
+							<strong>View Product Item Info</strong>
+						</div>
+						<div class="panel-body panelHidden" id="viewProductItemPanelHidden">
+							<table id="productItemInfoTable" class="table table-bordered table-responsive">
+								<thead>
+									<tr>
+										<th class="autoClick">SL. No</th>
+										<th >Product Item</th>
+										<th>Notes</th>
+										<th>Action</th>
+									</tr>
+								</thead>
+							</table>
+						</div>
+					</div>
+
+					<div class="panel panel-default">
+						<div class="panel-heading changeCursor" id="viewItemModelSlide"
+							 data-toggle="tooltip" data-placement="top"
+							 title="Click here to expand or collapse">
+							<strong>View Item Model Info</strong>
+						</div>
+						<div class="panel-body panelHidden" id="viewItemModelPanelHidden">
+							<table id="ItemModelInfoTable" class="table table-bordered table-responsive">
+								<thead>
+								<tr>
+									<th class="autoClick">SL. No</th>
+									<th >Item Code</th>
+									<th>Item Name</th>
+									<th>Action</th>
+								</tr>
+								</thead>
+							</table>
+						</div>
+					</div>
+
+					<div class="panel panel-default">
+						<div class="panel-heading changeCursor" id="viewItemModelPriceSlide"
+							 data-toggle="tooltip" data-placement="top"
+							 title="Click here to expand or collapse">
+							<strong>View Item Model Info</strong>
+						</div>
+						<div class="panel-body panelHidden" id="viewItemModelPricePanelHidden">
+							<table id="ItemModelPriceInfoTable" class="table table-bordered table-responsive">
+								<thead>
+								<tr>
+									<th class="autoClick">SL. No</th>
+									<th >Model Code</th>
+									<th>Sell Price</th>
+									<th>Buy Price</th>
+									<th>Start Date</th>
+									<th>Action</th>
+								</tr>
+								</thead>
+							</table>
+						</div>
+					</div>
+
+
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+
+
+
+
+
+	<script type="text/javascript" src="../../../js/jquery.validate.js"></script>
+	<script type="text/javascript" src="../../../js/customValidator.js"></script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8"></meta>
+</head>
+<body>
+	<div th:fragment="editProductItem">
+		<div class="container">
+			<div class="row">
+				
+				<div th:if="${#strings.isEmpty(updateMessage)!=true}">
+					<h4 th:text="${updateMessage}" class="message"></h4>
+				</div>
+				<div class="col-md-offset-2 col-md-8">
+					<div class="panel panel-primary">
+						<div class="panel-heading">
+							<h3>Edit Product Item</h3>
+						</div>
+						<div class="panel-body">
+							<form id="productItemForm" th:action="@{/user/update/productItem}" method="post" th:object="${productItem}">
+							<div class="form-group">
+								<p class="col-md-4" for="name">Product Item:</p> 
+								<div class="col-md-8">
+									<input type="text"
+									class="form-control" th:field="*{productItemName}" placeholder="Supplier name"/>
+								</div>
+							</div>
+							&#160;
+							<div class="form-group">
+								<p class="col-md-4" for="address">Notes:</p> 
+								<div class="col-md-8">
+									<input type="hidden" th:field="*{id}"/> 
+									<textarea rows="2" cols="5" th:field="*{notes}"  class="form-control" placeholder="Notes"></textarea>
+								</div>
+							</div>
+							&#160;
+							<div class="form-group"> 
+								<div class="col-md-offset-4 col-md-12">
+									<input type="submit" class="btn btn-primary" value="Update"/>
+									<a th:href="@{/user/setup}" class="btn btn-warning">Back</a>
+								</div>
+							</div>
+							&#160;
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

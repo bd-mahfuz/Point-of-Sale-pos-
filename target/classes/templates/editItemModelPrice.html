@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th = "http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"></meta>
+</head>
+<body>
+    <div th:fragment="editItemModelPrice">
+        <div class="container">
+            <div class="row">
+                <div th:if="${#strings.isEmpty(updateMessage)!=true}">
+                    <h4 th:text="${updateMessage}" class="message"></h4>
+                </div>
+                <div class="col-md-offset-2 col-md-8">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading changeCursor">
+                            <strong>Update Item Model Price Info</strong>
+                        </div>
+                        <div class="panel-body">
+                            <form id="itemModelPriceForm" th:action="@{/user/update/itemModelPrice}" method="post"
+                                  th:object="${itemModelPrice}">
+                                <div class="form-group">
+                                    <p class="col-md-4" for="name">Item Name:</p>
+                                    <div class="col-md-8">
+                                        <select th:field="*{productItem.id}" id="productItemId" class="selectpicker form-control" data-live-search="true">
+                                            <option value="1">-Select Product Item-</option>
+                                            <option th:each="product : ${productList}" th:value="${product.id}" th:text="${product.productItemName}"></option>
+                                        </select>
+                                    </div>
+                                </div>
+                                &#160;
+                                <div class="form-group">
+                                    <p class="col-md-4" for="name">Model Code:</p>
+                                    <div class="col-md-8">
+                                        <select th:field="*{itemModel.id}" class="form-control" id="itemModels">
+                                            <!-- option value will come from ajax -->
+                                        </select>
+                                    </div>
+                                </div>
+                                &#160;
+                                <div class="form-group">
+                                    <p class="col-md-4" for="name">Buy Price:</p>
+                                    <div class="col-md-8">
+                                        <input type="text" th:field="*{buyPrice}"
+                                               class="form-control" placeholder="Buy price"/>
+                                    </div>
+                                </div>
+                                &#160;
+                                <div class="form-group">
+                                    <p class="col-md-4" for="name">Sell Price:</p>
+                                    <div class="col-md-8">
+                                        <input type="text" th:field="*{sellPrice}"
+                                               class="form-control" placeholder="Sell price"/>
+                                    </div>
+                                </div>
+                                &#160;
+                                <div class="form-group">
+                                    <p class="col-md-4" for="address">Notes:</p>
+                                    <div class="col-md-8">
+                                        <textarea th:field="*{notes}" rows="2" cols="5" class="form-control" placeholder="Notes"></textarea>
+                                    </div>
+                                </div>
+                                &#160;
+                                <div class="form-group">
+                                    <div class="col-md-offset-4 col-md-12">
+                                        <input type="hidden" th:field="*{id}"/>
+                                        <input type="submit" class="btn btn-primary" value="Update"/>
+                                        <a th:href="@{/user/setup}" class="btn btn-info">Back</a>
+                                    </div>
+                                </div>
+                                &#160;
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

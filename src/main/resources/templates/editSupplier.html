@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8"></meta>
+</head>
+<body>
+	<div th:fragment="editSupplier">
+		<div class="container">
+			<div class="row">
+				<div th:if="${#strings.isEmpty(updateMessage)!=true}">
+					<h4 th:text="${updateMessage}" class="message"></h4>
+				</div>
+				<div class="col-md-offset-2 col-md-8">
+					<div class="panel panel-primary">
+						<div class="panel-heading">
+							<h3>Edit Supplier</h3>
+						</div>
+						<div class="panel-body">
+							<form id="supplierForm" th:action="@{/user/updateSupplier}" method="post" th:object="${supplier}">
+							<div class="form-group">
+								<p class="col-md-4" for="name">Supplier Name:</p> 
+								<div class="col-md-8">
+									<input type="text"
+									class="form-control" th:field="*{name}" id="name" placeholder="Supplier name"/>
+								</div>
+							</div>
+							&#160;
+							<div class="form-group">
+								<p class="col-md-4" for="companyName">Company Name:</p> 
+								<div class="col-md-8">
+									<input type="text"
+									class="form-control" th:field="*{companyName}" id="companyName" placeholder="Company Name"/>
+								</div>
+							</div>
+							&#160;
+							<div class="form-group">
+								<p class="col-md-4" for="address">Address:</p> 
+								<div class="col-md-8">
+									<textarea th:field="*{address}" rows="2" cols="5" class="form-control" placeholder=""></textarea>
+								</div>
+							</div>
+							&#160;
+							<div class="form-group">
+								<p class="col-md-4" for="phone">Phone:</p> 
+								<div class="col-md-8">
+									<input type="text"
+									class="form-control" th:field="*{phone}" id="phone" placeholder="Phone"/>
+								</div>
+							</div>
+							&#160;
+							<div class="form-group">
+								<p class="col-md-4" for="fax">Fax:</p> 
+								<div class="col-md-8">
+									<input type="text"
+									class="form-control" th:field="*{fax}" id="fax" placeholder="Fax"/>
+								</div>
+							</div>
+							&#160;
+							<div class="form-group">
+								<p class="col-md-4" for="mobile">Mobile:</p> 
+								<div class="col-md-8">
+									<input type="text"
+									class="form-control" th:field="*{mobile}" id="mobile" placeholder="Mobile"/>
+								</div>
+							</div>
+							&#160;
+							<div class="form-group">
+								<p class="col-md-4" for="web">Web:</p> 
+								<div class="col-md-8">
+									<input type="text"
+									class="form-control" th:field="*{web}" id="web" placeholder="Web"/>
+								</div>
+							</div>
+							&#160;
+							<div class="form-group">
+								<p class="col-md-4" for="email">Email:</p> 
+								<div class="col-md-8">
+									<input type="text"
+									class="form-control" th:field="*{email}" id="email" placeholder="Email"/>
+								</div>
+							</div>
+							&#160;
+							<div class="form-group">
+								<p class="col-md-4" for="note">Notes:</p> 
+								<div class="col-md-8">
+									<textarea th:field="*{notes}" rows="2" cols="5" class="form-control" placeholder="Notes"></textarea>
+									<input type="hidden" th:field="*{id}"/>
+								</div>
+							</div>
+							&#160;
+							<div class="form-group"> 
+								<div class="col-md-offset-4 col-md-12">
+									<input type="submit" class="btn btn-primary" value="Update"/>
+									<a href="/user/setup" class="btn btn-info">Back</a>
+								</div>
+							</div>
+							&#160;
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	
+	</div>
+</body>
+</html>

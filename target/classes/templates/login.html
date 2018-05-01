@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8"></meta>
+<title>Login</title>
+<link rel="stylesheet" type="text/css"
+	href="webjars/bootstrap/3.3.7/css/bootstrap.min.css" />
+
+<!-- linking with custom css -->
+<link rel="stylesheet" type="text/css"
+	href="webjars/font-awesome/4.7.0/css/font-awesome.min.css" />
+<link rel="stylesheet" type="text/css" href="/css/loginCSS.css" />
+</head>
+<body>
+	
+	<div class="login">
+		<div th:if="${param.logout}">
+			<div class="alert alert-info" id="logoutMessage">You have been logged out.</div>
+		</div>
+		<h1>Login</h1>
+
+		<div th:if="${param.error}">
+			<div class="alert alert-danger">Invalid username and password.
+			</div>
+		</div>
+		
+		<form th:action="@{/login}" method="post">
+			<input type="text" name="username" id="username" placeholder="Username"
+				required="required" /> <input type="password" name="password" id="password"
+				placeholder="Password" required="required" />
+			<button type="submit" class="btn btn-primary btn-block btn-large">Let
+				me in.</button>
+		</form>
+		<br />
+
+		
+		<script type="text/javascript"
+			src="../webjars/jquery/1.11.1/jquery.js"></script>
+		<script type="text/javascript"
+			src="webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<script type="text/javascript"
+			src="/js/custom.js"></script>
+	</div>
+</body>
+</html>
