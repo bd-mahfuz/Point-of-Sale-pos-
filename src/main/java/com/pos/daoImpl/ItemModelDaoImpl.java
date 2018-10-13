@@ -87,4 +87,18 @@ public class ItemModelDaoImpl implements ItemModelDao {
             return null;
         }
     }
+
+    @Override
+    public int getQuantity(int itemModelId) {
+        String sql = "select quantity from ItemModel where id=:id";
+        try {
+            return (int) sessionFactory.getCurrentSession()
+                    .createQuery(sql)
+                    .setParameter("id", itemModelId)
+                    .list().get(0);
+        }catch (Exception e) {
+            e.printStackTrace();;
+            return 0;
+        }
+    }
 }

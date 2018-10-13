@@ -6,10 +6,10 @@ import com.pos.dto.Supplier;
 
 public interface SupplierDao {
 	
-	public boolean add(Supplier supplier);
-	public boolean update(Supplier supplier);
-	public boolean delete(int id);
+	boolean add(Supplier supplier);
+	boolean update(Supplier supplier);
+	boolean delete(int id);
 	
-	public List<Supplier> getAll();
-	public Supplier get(int id);
+	List<Supplier> getAll();
+	Supplier get(int id);
 }

@@ -51,4 +51,14 @@ public class ItemModelPriceServiceImpl implements ItemModelPriceService{
     public ItemModelPrice getItemModelPriceByItemModel(ItemModel itemModel) {
         return itemModelPriceDao.getItemModelPriceByItemModel(itemModel);
     }
+
+    @Override
+    public double getBuyPriceByModel(ItemModel itemModel) {
+        return itemModelPriceDao.getBuyPriceByModel(itemModel);
+    }
+
+    @Override
+    public double getSellPriceByModel(ItemModel itemModel) {
+        return itemModelPriceDao.getSellPriceByModel(itemModel);
+    }
 }

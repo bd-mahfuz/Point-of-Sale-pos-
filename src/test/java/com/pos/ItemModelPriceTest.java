@@ -120,5 +120,13 @@ public class ItemModelPriceTest {
                 itemModelPriceService.getItemModelPriceByItemModel(itemModel).getProductItem().getProductItemName());
     }
 
+    @Test
+    public void testGetBuyPrice() {
+        ItemModel itemModel = itemModelService.getItemModel(1);
+        assertEquals("failed to get buy price by item model", "30000.0",
+                itemModelPriceService.getBuyPriceByModel(itemModel)+"");
+
+    }
+
 
 }

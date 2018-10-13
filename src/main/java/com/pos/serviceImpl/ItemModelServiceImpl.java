@@ -4,6 +4,7 @@ import com.pos.dao.ItemModelDao;
 import com.pos.dao.ItemModelPriceDao;
 import com.pos.dto.ItemModel;
 import com.pos.dto.ItemModelPrice;
+import com.pos.dto.MacList;
 import com.pos.dto.ProductItem;
 import com.pos.service.ItemModelService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +24,10 @@ public class ItemModelServiceImpl implements ItemModelService {
 
     @Override
     public boolean addItemModel(ItemModel itemModel) {
-        return itemModelDao.add(itemModel);
+
+        boolean isAdded =  itemModelDao.add(itemModel);
+
+        return  isAdded;
     }
 
     @Override
@@ -66,5 +70,10 @@ public class ItemModelServiceImpl implements ItemModelService {
     @Override
     public List<ItemModel> getItemModelByProduct(ProductItem productItem) {
         return itemModelDao.getByProduct(productItem);
+    }
+
+    @Override
+    public int getQuantity(int itemModelId) {
+        return itemModelDao.getQuantity(itemModelId);
     }
 }

@@ -109,4 +109,34 @@ public class ItemModelPriceDaoImpl implements ItemModelPriceDao {
             return null;
         }
     }
+
+    @Override
+    public double getBuyPriceByModel(ItemModel itemModel) {
+        String sql = "from ItemModelPrice where itemModel =:itemModel";
+        try {
+            ItemModelPrice itemModelPrice = (ItemModelPrice) sessionFactory.getCurrentSession()
+                    .createQuery(sql)
+                    .setParameter("itemModel", itemModel)
+                    .list().get(0);
+            return itemModelPrice.getBuyPrice();
+        }catch (Exception e) {
+            e.printStackTrace();
+            return 0;
+        }
+    }
+
+    @Override
+    public double getSellPriceByModel(ItemModel itemModel) {
+        String sql = "from ItemModelPrice where itemModel =:itemModel";
+        try {
+            ItemModelPrice itemModelPrice = (ItemModelPrice) sessionFactory.getCurrentSession()
+                    .createQuery(sql)
+                    .setParameter("itemModel", itemModel)
+                    .list().get(0);
+            return itemModelPrice.getSellPrice();
+        }catch (Exception e) {
+            e.printStackTrace();
+            return 0;
+        }
+    }
 }

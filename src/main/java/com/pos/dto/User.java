@@ -18,7 +18,6 @@ public class User {
     private String email;
     @Column(name = "phone_number")
     private String phoneNumber;
-    //private List<Address> addresses;
     private String password;
     @Transient
     private String confirmPassword;
@@ -26,6 +25,16 @@ public class User {
     private boolean enable = true;
     private String role;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    private Address address;
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
     public int getId() {
         return id;
     }

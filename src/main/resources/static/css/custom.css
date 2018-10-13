@@ -95,6 +95,37 @@ body {
 	color: red;
 }
 
+.spaceNeed {
+	margin-top: 10px;
+}
+
+.reareng-heading {
+	display: inline-block;
+	width: 100%;
+}
+
+.float-right {
+	float: right;
+}
+
+.float-left {
+	float: left;
+}
+
+.btn-custom {
+	margin-left: 5px;
+	margin-top: 5px;
+}
+.input-custom {
+	width: 150px;
+	float: left;
+}
+
+.centerAlign{
+	text-align: center;
+	padding-bottom: 20px;
+}
+
 
 
 

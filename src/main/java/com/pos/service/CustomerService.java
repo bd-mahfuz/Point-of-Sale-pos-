@@ -10,11 +10,15 @@ import com.pos.dao.AbstractDaoImpl;
 import com.pos.dao.CustomerDao;
 import com.pos.dto.Customer;
 
-@Service
-@Transactional
-public class CustomerService {
-	
-	@Autowired
-	SessionFactory sessionFactory;
+import java.util.List;
+
+
+public interface CustomerService {
+
+	boolean addCustomer(Customer customer);
+	boolean updateCustomer(Customer customer);
+	boolean deleteCustomer(int id);
+	List<Customer> getAllCustomer();
+	Customer getCustomer(int id);
 	
 }

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th = "http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+<body>
+
+    <div th:fragment="purchaseConfirmFragment">
+
+        <div class="container">
+
+            <div class="row">
+
+                <div class="col-md-offset-2 col-md-8">
+
+                    <div class="panel panel-default">
+
+                        <div class="panel-heading">
+                            Purchase Confirmation
+                        </div>
+
+                        <div class="panel-body">
+
+                            <table class="table table-striped table-bordered">
+
+                                <tr>
+                                    <td>Supplier</td>
+                                    <td th:text="${purchase.supplier.name}"></td>
+                                </tr>
+
+                                <tr>
+                                    <td>Product Model</td>
+                                    <td th:text="${purchase.model.productItem.productItemName+' - '+purchase.model.modelCode}"></td>
+                                </tr>
+
+                                <tr>
+                                    <td>Bill No</td>
+                                    <td th:text="${purchase.billNo}"></td>
+                                </tr>
+
+                                <tr>
+                                    <td>Invoice No</td>
+                                    <td th:text="${purchase.invoiceNo}"></td>
+                                </tr>
+
+                                <tr>
+                                    <td>Airway bill Amount</td>
+                                    <td th:text="${purchase.airWayBill}"></td>
+                                </tr>
+
+                                <tr>
+                                    <td>No of Cartoon</td>
+                                    <td th:text="${purchase.noOfCartoon}"></td>
+                                </tr>
+
+                                <tr>
+                                    <td>Cartoon Dimension</td>
+                                    <td th:text="${purchase.cartoonDimension}"></td>
+                                </tr>
+
+                                <tr>
+                                    <td>Quantity</td>
+                                    <td th:text="${purchase.quantity}"></td>
+                                </tr>
+
+                                <tr>
+                                    <td>Rate</td>
+                                    <td th:text="${purchase.rate}"></td>
+                                </tr>
+
+                                <tr>
+                                    <td>Total price</td>
+                                    <td th:text="${purchase.total}"></td>
+                                </tr>
+
+                                <tr>
+                                    <td>Net Payment</td>
+                                    <td th:text="${purchase.netPayment}"></td>
+                                </tr>
+
+                                <tr>
+                                    <td>Due Amount</td>
+                                    <td th:text="${purchase.due}"></td>
+                                </tr>
+
+                            </table>
+
+
+                            <div class="col-md-offset-6 col-md-4">
+                                <form th:action="@{/user/purchase}" method="post" th:object="${purchase}">
+                                    <input type="hidden" th:field="*{billNo}"/>
+                                    <input type="hidden" th:field="*{invoiceNo}"/>
+                                    <input type="hidden" th:field="*{airWayBill}"/>
+                                    <input type="hidden" th:field="*{noOfCartoon}"/>
+                                    <input type="hidden" th:field="*{cartoonDimension}"/>
+                                    <input type="hidden" th:field="*{quantity}"/>
+                                    <input type="hidden" th:field="*{rate}"/>
+                                    <input type="hidden" th:field="*{total}"/>
+                                    <input type="hidden" th:field="*{netPayment}"/>
+                                    <input type="hidden" th:field="*{due}"/>
+                                    <input type="hidden" th:field="*{supplier.id}"/>
+                                    <input type="hidden" th:field="*{model.id}"/>
+
+                                    <a th:href="@{/user/purchase}" class="btn btn-warning">Back</a>
+                                    <input type="submit" class="btn btn-primary" value="Confirm Purchase"/>
+
+                                </form>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+</html>

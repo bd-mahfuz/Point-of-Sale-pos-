@@ -548,9 +548,365 @@ $(document).ready(function() {
     })
 
 
+	// ------------------------ Purchase Part ---------------------------------------------------------
+
+    // getting invoice and bill no for purchase
+    $.ajax({
+        type: 'GET',
+        url: '/user/getAllPurchase',
+        success: function (data) {
+            $('#billNo').val(data);
+            $('#invoiceNo').val(data);
+            //$('#invoiceNo').removeAttr("disabled");
+        },
+        error: function (e) {
+            console.log("Failed to load data for bill no. "+e)
+        }
+    });
 
 
-  
+    $('#itemModel').change(function () {
+		var id = $(this).val();
+
+		if (id > 0) {
+			// disable the input field
+            $('#quantity').removeAttr('disabled');
+
+            $('#quantity').change(function () {
+				var qty = $(this).val();
+				var airWayBill = $('#airWayBill').val();
+				if (qty > 0 && id > 0) {
+                    $('#rate').removeAttr('disabled');
+                    $('#total').removeAttr('disabled');
+
+                    // getting the product buy price from the controller
+					$.ajax({
+						type: 'POST',
+						url:'/user/productBuyPrice/'+id,
+						success: function (data) {
+							$('#rate').val(parseFloat(data));
+                        },
+						error: function (e) {
+							console.log("Failed to fetch buy price. ", e);
+                        }
+
+					})
+
+                    //getting the total purchase value from the controller
+                    $.ajax({
+						type: 'POST',
+						url: '/user/totalPurchase/'+id+'/'+qty,
+						success: function (data) {
+							var total = (parseFloat(data) + parseFloat(airWayBill));
+							$('#total').val(total);
+
+							//changing total while change the airway bill
+							$('#airWayBill').change(function () {
+                                var airWayChangedBill = $(this).val();
+                                if (airWayChangedBill == '') {
+                                	airWayChangedBill = 0.0;
+								}
+                                var changedTotal = parseFloat(data) + parseFloat(airWayChangedBill);
+                                $('#total').val(changedTotal);
+
+                                // changing net payment for changing airway bill
+								var dueAmount = $('#due').val();
+								if(dueAmount == '') {
+									dueAmount = 0.0;
+								}
+                                var changedNetpayment = parseFloat(changedTotal) - parseFloat(dueAmount);
+
+                                $('#netPayment').val(changedNetpayment);
+                            });
+
+							// enabling the net payment and due input field
+                            $('#netPayment').removeAttr('disabled');
+                            $('#due').removeAttr('disabled');
+
+							$('#netPayment').val(total);
+
+							// changing net payment for changing due amount
+							$('#due').change(function () {
+								var dueAmount = $(this).val();
+								if (dueAmount == '') {
+									dueAmount = 0;
+								}
+
+								var changedNetPayment = parseFloat($('#total').val()) - parseFloat(dueAmount);
+                                $('#netPayment').val(changedNetPayment);
+                            });
+                        },
+						error: function (e) {
+							console.log("Failed to fetch total data from controller. "+e);
+                        }
+					});
+
+				} else {
+					$('#rate').attr('disabled', true);
+					$('#total').attr('disabled', true);
+					$('#netPayment').attr('disabled', true);
+					$('#due').attr('disabled', true);
+
+                    $('#rate').val('');
+                    $('#total').val('');
+                    $('#netPayment').val('');
+                    $('#due').val('');
+				}
+
+
+            });
+
+        } else {
+            $('#quantity').attr('disabled', true);
+            $('#rate').attr('disabled', true);
+            $('#total').attr('disabled', true);
+            $('#netPayment').attr('disabled', true);
+            $('#due').attr('disabled', true);
+
+            $('#quantity').val('');
+            $('#rate').val('');
+            $('#total').val('');
+            $('#netPayment').val('');
+            $('#due').val('');
+		}
+
+
+    });
+
+
+    // --------------------------- Sales invoice Part ---------------------------------------------
+
+
+	$.ajax({
+		type: 'GET',
+		url: '/updated-invoice-no',
+		success: function (invoiceNo) {
+			$('#invoiceUNo').val(invoiceNo);
+        },
+		error: function (e) {
+			console.log('Failed to load invoice no.', e);
+        }
+	})
+
+
+	$('#itemModelS').change(function () {
+
+		var modelId = $(this).val();
+
+		if (modelId > 0) {
+            // getting available quantity
+            $.ajax({
+                type: 'GET',
+                url: "/item-model/" +modelId+ "/quantity",
+                success: function (availableQty) {
+                    $('#availablelQty').val(availableQty);
+
+                    $('#availablelQty').removeAttr('disabled');
+                    $('#quantity').removeAttr('disabled');
+
+                    // field effect for changing the quantity field
+                    $('#quantity').change(function () {
+						var qty = $(this).val();
+						if (qty > 0) {
+							// enabling fields
+							$('#unit').removeAttr('disabled');
+							$('#rateS').removeAttr('disabled');
+							$('#totalS').removeAttr('disabled');
+							$('#discountS').removeAttr('disabled');
+							$('#netTotalS').removeAttr('disabled');
+							$('#netTotalS').removeAttr('disabled');
+							$('#paymentReceivedS').removeAttr('disabled');
+							$('#dueS').removeAttr('disabled');
+
+							// getting the sales price from controller using ajax
+                            $.ajax({
+                                type: 'GET',
+                                url: '/sell-price/'+modelId,
+                                success: function (sellPrice) {
+
+                                    $('#rateS').val(sellPrice);
+
+                                    $.ajax({
+                                        type: 'GET',
+                                        url: '/total-sell-price/' +modelId+ "/"+qty,
+                                        success: function (totalSellPrice) {
+                                            //getting the unit value and calculate rate and other thing base on this
+                                            var unit = $('#unit').val();
+                                            if (unit == 'pcs') {
+                                                var unitAmount = 1;
+												$('#totalS').val(totalSellPrice);
+												$('#netTotalS').val(totalSellPrice);
+                                                $('#paymentReceivedS').val(totalSellPrice);
+                                            }else {
+                                                var unitAmount = 2;
+                                                $('#totalS').val(totalSellPrice * unitAmount);
+                                                $('#netTotalS').val(totalSellPrice * unitAmount);
+                                                $('#paymentReceivedS').val(totalSellPrice * unitAmount);
+                                            }
+                                            
+                                            // changing for unit re-arrenge fields
+											$('#unit').change(function () {
+												var changedUnit = $(this).val();
+												if (changedUnit == 'pcs') {
+                                                    var unitAmount = 1;
+                                                    $('#totalS').val(totalSellPrice);
+
+                                                    // update net total value with discount value
+													var discount = $('#discountS').val();
+													var updataNetTotal = totalSellPrice - discount;
+                                                    $('#netTotalS').val(updataNetTotal);
+
+                                                    // set payment received
+													var dueAmount = $('#dueS').val();
+													var updatePayment = updataNetTotal - dueAmount;
+													$('#paymentReceivedS').val(updatePayment);
+												}
+												else {
+                                                    var unitAmount = 2;
+                                                    $('#totalS').val(totalSellPrice * unitAmount);
+
+                                                    // update net total value with discount value
+                                                    var discount = $('#discountS').val();
+                                                    var updataNetTotal = (totalSellPrice * unitAmount) - discount;
+                                                    //console.log("updated net total", updataNetTotal);
+                                                    $('#netTotalS').val(updataNetTotal);
+
+                                                    // set payment received
+                                                    var dueAmount = $('#dueS').val();
+                                                    var updatePayment = updataNetTotal - dueAmount;
+                                                    $('#paymentReceivedS').val(updatePayment);
+												}
+                                            });
+
+                                            // changing effect with updating discount
+											$('#discountS').change(function () {
+
+												var discount = $(this).val();
+												var total = $('#totalS').val();
+												var dueAmount = $('#dueS').val();
+
+												// update net total with discount change
+												$('#netTotalS').val(total - discount);
+
+                                                // update payment received with discount change
+												$('#paymentReceivedS').val($('#netTotalS').val() - dueAmount);
+
+
+                                            });
+
+                                            // changing effect with updating due amount
+											$('#dueS').change(function () {
+
+                                                var dueAmount = $(this).val();
+                                                // update payment received with due change
+                                                $('#paymentReceivedS').val($('#netTotalS').val() - dueAmount);
+
+
+                                            });
+
+                                        },
+										error: function (e) {
+                                            console.log('Failed to fetch total sell price. ', e);
+                                        }
+									})
+
+
+                                },
+                                error: function (e) {
+                                    console.log('Failed to fetch sell price. ', e);
+                                }
+                            });
+
+
+						}
+						else {
+							// setting field as disabled
+                            $('#unit').attr('disabled', true);
+                            $('#rateS').attr('disabled', true);
+                            $('#totalS').attr('disabled', true);
+                            $('#discountS').attr('disabled', true);
+                            $('#netTotalS').attr('disabled', true);
+                            $('#netTotalS').attr('disabled', true);
+                            $('#paymentReceivedS').attr('disabled', true);
+                            $('#dueS').attr('disabled', true);
+
+                            //setting disabled field value as empty
+                            $('#rateS').val("");
+                            $('#totalS').val("");
+                            $('#discountS').val("");
+                            $('#netTotalS').val("");
+                            $('#netTotalS').val("");
+                            $('#paymentReceivedS').val("");
+                            $('#dueS').val("");
+
+
+						}
+                    });
+                },
+                error: function (e) {
+                    console.log("Failed to fetch the quantity, "+ e);
+                }
+            })
+		}
+		else {
+			//setting field value as empty
+            $('#availablelQty').val("");
+            $('#quantity').val("");
+            $('#rateS').val("");
+            $('#totalS').val("");
+            $('#discountS').val("");
+            $('#netTotalS').val("");
+            $('#netTotalS').val("");
+            $('#paymentReceivedS').val("");
+            $('#dueS').val("");
+
+            // setting fields as disabled
+            $('#availablelQty').attr("disabled", true);
+            $('#quantity').attr("disabled", true);
+            $('#unit').attr('disabled', true);
+            $('#rateS').attr('disabled', true);
+            $('#totalS').attr('disabled', true);
+            $('#discountS').attr('disabled', true);
+            $('#netTotalS').attr('disabled', true);
+            $('#netTotalS').attr('disabled', true);
+            $('#paymentReceivedS').attr('disabled', true);
+            $('#dueS').attr('disabled', true);
+		}
+    });
+
+
+	// --------------------- return portion ------------------------------------------------------------
+
+
+
+    $('#hideReturnType').hide();
+
+    $('#searchWithMac').click(function () {
+        $('#hideReturnType').slideUp();
+        $('#searchKey').attr('placeholder', 'Mac');
+    });
+
+    $('#searchWithInvoice').click(function () {
+        $('#hideReturnType').slideDown();
+        $('#searchKey').attr('placeholder', 'Sell Invoice');
+
+        $('#returnType').change(function () {
+			var returnType = $(this).val();
+
+			if (returnType == 'sell') {
+
+				$('#searchKey').attr('placeholder', 'Sell Invoice');
+
+			}else {
+                $('#searchKey').attr('placeholder', 'Purchase Invoice');
+			}
+
+        });
+    });
+
+
+
+
 
 
 

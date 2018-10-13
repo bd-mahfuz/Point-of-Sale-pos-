@@ -17,4 +17,7 @@ public interface ItemModelPriceDao {
 
     List<ItemModelPrice> getItemModelPricesByProduct(ProductItem productItem);
     ItemModelPrice getItemModelPriceByItemModel(ItemModel itemModel);
+
+    double getBuyPriceByModel(ItemModel itemModel);
+    double getSellPriceByModel(ItemModel itemModel);
 }

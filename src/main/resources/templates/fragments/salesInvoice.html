@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+<body>
+
+    <div th:fragment="salesInvoiceFragment">
+
+        <div class="container">
+
+            <div class="row">
+
+                <div class="col-md-12">
+
+                    <ol class="breadcrumb">
+                        <li>
+                            <a th:href="@{/user/home}"><i class="fa fa-home"></i>Home</a>
+                        </li>
+                        <li class="active">Sales Invoice</li>
+                    </ol>
+
+                </div>
+
+            </div>
+
+            <div th:if="${#strings.isEmpty(message)!=true}">
+                <h4 th:text="${message}" class="message"></h4>
+            </div>
+
+            <div class="row">
+
+                <div class="col-md-offset-1 col-md-10">
+
+                    <div class="panel panel-default">
+
+                        <div class="panel-heading">
+                            Sales Invoice
+                        </div>
+
+                        <div class="panel-body">
+
+                            <form th:action="@{/user/confirm/sales-invoice}" method="post" th:object="${salesInvoice}">
+
+                                <div class="col-md-6">
+
+                                    <div class="form-group">
+                                        <p class="col-md-4" for="name">Customer Name:</p>
+                                        <div class="col-md-8">
+                                            <select th:field="*{customer.id}" id="productItemId" class="selectpicker form-control" data-live-search="true">
+                                                <option value="1">-Select Supplier-</option>
+                                                <option th:each="customer : ${customerList}" th:value="${customer.id}"
+                                                        th:text="${customer.name}"></option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    &#160;
+
+                                    <div class="form-group">
+                                        <p class="col-md-4" for="name">Model:</p>
+                                        <div class="col-md-8">
+                                            <select th:field="*{model.id}" id="itemModelS" class="selectpicker form-control" data-live-search="true">
+                                                <option value="0">-Select Model-</option>
+                                                <option th:each="itemModel : ${itemModelList}" th:value="${itemModel.id}"
+                                                        th:text="${itemModel.modelCode}"></option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    &#160;
+
+                                </div>
+
+                                <div class="col-md-6">
+
+                                    <div class="form-group">
+                                        <p class="col-md-4" for="name">Invoice No:</p>
+                                        <div class="col-md-8">
+                                            <input type="number" th:field="*{sellInvoice}" id="invoiceUNo"
+                                                   class="form-control" placeholder="0"/>
+                                        </div>
+                                    </div>
+                                    &#160;
+
+                                    <div class="form-group">
+                                        <p class="col-md-4" for="name">Sell Type:</p>
+                                        <div class="col-md-8">
+                                            <select th:field="*{sellType}" class="form-control">
+                                                <option th:value="Cash">Cash</option>
+                                                <option th:value="Credit">Credit</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    &#160;
+
+                                </div>
+
+                                <div class="col-md-12 spaceNeed">
+
+                                    <div class="col-md-2">
+                                        <p for="name">Available Qty</p>
+                                        <input type="text" th:field="*{availableQty}" id="availablelQty"
+                                               class="form-control" placeholder="0" disabled="disabled"/>
+                                    </div>
+
+                                    <div class="col-md-2">
+                                        <p for="name">Quantity</p>
+                                        <input type="text" th:field="*{quantity}" id="quantity"
+                                               class="form-control" placeholder="0" disabled="disabled"/>
+                                    </div>
+
+                                    <div class="col-md-2">
+                                        <p for="name">Unit</p>
+                                        <select th:field="*{unit}" id="unit" class="form-control" disabled="disabled">
+                                            <option th:value="pcs">pcs</option>
+                                            <option th:value="Pair">Pair</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="col-md-2">
+                                        <p for="name">Rate</p>
+                                        <input type="text" th:field="*{rate}" id="rateS"
+                                               class="form-control" placeholder="0" disabled="disabled"/>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <p for="name">Total</p>
+                                        <input type="text" th:field="*{total}" id="totalS"
+                                               class="form-control" placeholder="0" disabled="disabled"/>
+                                    </div>
+
+                                    <div class="col-md-2">
+                                        <p for="name">Discount</p>
+                                        <input type="text" th:field="*{dis}" id="discountS"
+                                               class="form-control" placeholder="0" disabled="disabled"/>
+                                    </div>
+
+                                </div>
+
+                                <div class="col-md-12 spaceNeed">
+
+                                    <div class="col-md-6"></div>
+
+                                    <div class="col-md-6 spaceNeed">
+                                        <div class="form-group spaceNeed">
+                                            <p class="col-md-4 rightAlign" for="name">Net Total:</p>
+                                            <div class="col-md-6">
+                                                <input type="text" value="0.0" th:field="*{netTotal}" id="netTotalS"
+                                                       class="form-control" placeholder="0" disabled="disabled"/>
+                                            </div>
+                                        </div>
+                                        &#160;
+                                        <div class="form-group">
+                                            <p class="col-md-4 rightAlign" for="name">Payment Received:</p>
+                                            <div class="col-md-6">
+                                                <input type="text" value="0.0" th:field="*{paymentReceive}" id="paymentReceivedS"
+                                                       class="form-control" placeholder="0" disabled="disabled"/>
+                                            </div>
+                                        </div>
+                                        &#160;
+                                        <div class="form-group">
+                                            <p class="col-md-4 rightAlign" for="name">Due:</p>
+                                            <div class="col-md-6">
+                                                <input type="text" value="0.0" th:field="*{due}" id="dueS"
+                                                       class="form-control" placeholder="0" disabled="disabled"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-12">
+                                    &#160;
+                                    &#160;
+                                    <div class="form-group">
+                                        <div class="col-md-offset-5 col-md-12">
+                                            <input type="submit" class="btn btn-primary" value="Next"/>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </form>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>

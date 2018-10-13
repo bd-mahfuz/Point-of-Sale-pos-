@@ -13,6 +13,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.UUID;
+
 @Controller
 public class ItemModelController {
 
@@ -21,6 +23,11 @@ public class ItemModelController {
 
     @RequestMapping(value="/user/add/itemModel", method= RequestMethod.POST)
     public String addNewItemModel(@ModelAttribute("itemModel") ItemModel itemModel) {
+        // set the mac code if item is 'with mac'
+        String mac = "MAC" + UUID.randomUUID().toString().substring(12).toUpperCase();
+        if (itemModel.getModelType().equals("With MAC")) {
+            itemModel.setModelType(mac);
+        }
 
         boolean flag = itemModelService.addItemModel(itemModel);
 

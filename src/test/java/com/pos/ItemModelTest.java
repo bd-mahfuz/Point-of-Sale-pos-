@@ -7,8 +7,10 @@ import com.pos.dao.ItemModelPriceDao;
 import com.pos.dao.ProductItemDao;
 import com.pos.dto.ItemModel;
 import com.pos.dto.ItemModelPrice;
+import com.pos.dto.MacList;
 import com.pos.dto.ProductItem;
 import com.pos.service.ItemModelService;
+import com.pos.service.MacListService;
 import com.pos.service.ProductItemService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -36,6 +38,9 @@ public class ItemModelTest {
 
     @Autowired
     ItemModelPriceDao itemModelPriceDao;
+
+    @Autowired
+    MacListService macListService;
 
     ItemModel itemModel;
     ProductItem productItem;
@@ -103,6 +108,20 @@ public class ItemModelTest {
                 itemModelService.getItemModelByProduct(productItem).size());
     }
 
+
+    @Test
+    public void testGetQuantity() {
+        assertEquals("failed to get quantity", 10,
+                itemModelService.getQuantity(1));
+    }
+
+
+    @Test
+    public void testGetAllMaclist() {
+        itemModel = itemModelDao.get(2);
+        assertEquals("failed to get quantity", 7,
+                macListService.getAllMacByItemModel(itemModel).size());
+    }
 
 
 

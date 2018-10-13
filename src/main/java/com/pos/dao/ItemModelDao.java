@@ -14,4 +14,6 @@ public interface ItemModelDao {
     public List<ItemModel> getAll();
     public ItemModel get(int id);
     public List<ItemModel> getByProduct(ProductItem productItem);
+
+    public int getQuantity(int itemModelId);
 }

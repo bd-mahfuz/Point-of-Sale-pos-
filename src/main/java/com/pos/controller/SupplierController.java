@@ -73,4 +73,6 @@ public class SupplierController {
 		return (isFlag)? "You have successfully delete the supplier with id:"+id 
 				: "Supplier delete is not successfull with id"+id;
 	}
+
+
 }

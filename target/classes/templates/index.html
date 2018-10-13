@@ -52,6 +52,22 @@
 			<div th:if="${userClickPurchase == true}">
 				<div th:replace="purchase :: parchase"></div>
 			</div>
+
+			<div th:if="${userClickPurchaseConfirm == true}">
+				<div th:replace="fragments/purchaseConfirm :: purchaseConfirmFragment"></div>
+			</div>
+
+			<div th:if="${userClickSalesInvoice == true}">
+				<div th:replace="fragments/salesInvoice :: salesInvoiceFragment"></div>
+			</div>
+
+			<div th:if="${userClickSalesInvoiceConfirm == true}">
+				<div th:replace="fragments/salesInvoiceConfirm :: salesInvoiceConfirmFragment"></div>
+			</div>
+
+			<div th:if="${userClickReturn == true}">
+				<div th:replace="fragments/return :: returnFragment"></div>
+			</div>
 		</div>
 		
 	

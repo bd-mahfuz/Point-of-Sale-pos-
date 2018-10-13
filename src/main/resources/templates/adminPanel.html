@@ -9,7 +9,7 @@
     <meta name="description" content=""/>
     <meta name="author" content=""/>
 
-    <title>SB Admin - Bootstrap Admin Template</title>
+    <title th:text="${title}"></title>
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" type="text/css"
@@ -21,6 +21,9 @@
     <!-- Morris Charts CSS -->
     <link href="/css/morris.css" rel="stylesheet"/>
 
+
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap-select.css"/>
+
     <!-- Custom Fonts -->
     <link rel="stylesheet" type="text/css"
           href="../../../webjars/font-awesome/4.7.0/css/font-awesome.min.css"/>
@@ -31,6 +34,10 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <script th:inline="javascript">
+        window.menu = /*[[${title}]]*/ 'default';
+        //console.log(menu);
+    </script>
 
 </head>
 
@@ -51,6 +58,10 @@
             <div th:if="${adminClickAddUser == true}">
                 <div th:replace="/fragments/addUser :: addUser"></div>
             </div>
+
+            <div th:if="${adminClickAddAddress == true}">
+                <div th:replace="/fragments/addUserAddress :: addAddressFragment"></div>
+            </div>
         </div>
         <!-- /#page-wrapper -->
 
@@ -64,6 +75,11 @@
     <!-- bootstrap -->
     <script type="text/javascript"
             src="../../../webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <script src="../../../js/admin.js"></script>
+
+    <!-- custom select -->
+    <script type="text/javascript" src="/js/bootstrap-select.js"></script>
 
     <!-- Morris Charts JavaScript -->
     <script src="../../../js/raphael.min.js"></script>

@@ -1,5 +1,6 @@
 package com.pos;
 
+import com.pos.dto.Address;
 import com.pos.dto.User;
 import com.pos.service.UserService;
 import org.junit.Test;
@@ -24,6 +25,13 @@ public class UserTest {
 
     @Test
     public void testAddUser() throws InitializationError {
+
+        Address address = new Address();
+        address.setAddressLine("new Address line");
+        address.setCity("Dhaka");
+        address.setCountry("Bangladesh");
+        address.setState("Merul badda");
+
         User user = new User();
         user.setFirstName("Abul");
         user.setLastName("Kalam");
@@ -32,6 +40,7 @@ public class UserTest {
         user.setUserName("kalam");
         user.setRole("USER");
         user.setPassword(passwordEncoder.encode("12345"));
+        user.setAddress(address);
         assertEquals("failed to add new User", true, userService.addUser(user));
     }
 

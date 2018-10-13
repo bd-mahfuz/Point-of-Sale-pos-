@@ -231,10 +231,70 @@ $(document).ready(function(){
                     required: "Please enter buy price!"
                 },
                 sellPrice: {
-                    required: "Pleas enter sell price!"
+                    required: "Please enter sell price!"
                 }
             }
         });
     }
+
+
+    // ----------------- validating purchase form ---------------------------------
+    var $purchaseForm = $('#purchaseForm');
+
+    if ($purchaseForm.length) {
+
+        $purchaseForm.validate({
+            rules: {
+                billNo: {
+                    required: true
+                },
+                invoiceNo: {
+                    required: true
+                },
+                'model.id': {
+                    required: true
+                },
+                quantity: {
+                    required: true
+                },
+                rate: {
+                    required: true
+                },
+                total: {
+                    required: true
+                },
+                netPayment: {
+                    required: true
+                }
+
+
+            },
+            messages: {
+                billNo: {
+                    required: "Please enter bill no."
+                },
+                invoiceNo: {
+                    required: "Please enter invoice no."
+                },
+                'model.id': {
+                    required: "Please select model."
+                },
+                quantity: {
+                    required: "Please enter quantity"
+                },
+                rate: {
+                    required: "Rate field should not be empty."
+                },
+                total: {
+                    required: "Total field should not be empty."
+                },
+                netPayment: {
+                    required: "Net payment field should not be empty."
+                }
+            }
+        });
+
+    }
+
 
 });

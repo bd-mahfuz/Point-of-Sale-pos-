@@ -1,6 +1,7 @@
 package com.pos.dto;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name="item_model")
@@ -13,6 +14,7 @@ public class ItemModel {
 	private String modelType;
 	@Column(name="model_code")
 	private String modelCode;
+	private int quantity;
 	private String notes;
 	@ManyToOne
 	@JoinColumn(name = "productId")
@@ -26,6 +28,13 @@ public class ItemModel {
 		this.productItem = productItem;
 	}
 
+	public int getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
 
 	public int getId() {
 		return id;

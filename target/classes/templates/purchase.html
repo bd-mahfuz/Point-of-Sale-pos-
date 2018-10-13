@@ -6,18 +6,40 @@
 <body>
     <div th:fragment="parchase">
         <div class="container">
+
+            <div class="row">
+                <div class="col-md-12">
+                    <ol class="breadcrumb">
+                        <li>
+                            <a th:href="@{/user/home}"><i class="fa fa-home"></i>Home</a>
+                        </li>
+                        <li class="active">Purchase Entry</li>
+                    </ol>
+                </div>
+            </div>
+
+           <!-- <p th:text="${param.message[0]}"></p>-->
+
+            <div th:if="${#strings.isEmpty(message)!=true}">
+                <h4 th:text="${param.message[0]}" class="message"></h4>
+            </div>
+
             <div class="row">
                 <div class="col-md-offset-1 col-md-10">
-                    <div class="panel panel-primary">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Purchase Entry
+                        </div>
                         <div class="panel-body">
+                            <form id="purchaseForm" th:action="@{/user/purchaseConfirm}" method="post" th:object="${purchase}">
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <p class="col-md-4" for="name">Supplier Name:</p>
                                     <div class="col-md-8">
-                                        <select class="form-control" id="itemModels">
-                                            <option>1</option>
-                                            <option>2</option>
-                                            <option>3</option>
+                                        <select th:field="*{supplier.id}" id="productItemId" class="selectpicker form-control" data-live-search="true">
+                                            <option value="1">-Select Supplier-</option>
+                                            <option th:each="supplier : ${supplierList}" th:value="${supplier.id}"
+                                                    th:text="${supplier.name}"></option>
                                         </select>
                                     </div>
                                 </div>
@@ -25,7 +47,7 @@
                                 <div class="form-group">
                                     <p class="col-md-4" for="name">Bill No:</p>
                                     <div class="col-md-8">
-                                        <input type="number"
+                                        <input type="number" th:field="*{billNo}" id="billNo"
                                                class="form-control" placeholder="0"/>
                                     </div>
                                 </div>
@@ -33,40 +55,110 @@
                                 <div class="form-group">
                                     <p class="col-md-4" for="name">Invoice No:</p>
                                     <div class="col-md-8">
-                                        <input type="number"
+                                        <input type="number" th:field="*{invoiceNo}" id="invoiceNo"
                                                class="form-control" placeholder="0"/>
                                     </div>
                                 </div>
-                                &#160;
+                                &#160;&#160;
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <p class="col-md-4" for="name">Airway Bill Amount:</p>
-                                    <div class="col-md-8">
-                                        <input type="number"
+                                    <p class="col-md-6" for="name">Airway Bill Amount:</p>
+                                    <div class="col-md-6">
+                                        <input type="number" th:field="*{airWayBill}" value="0.00" id="airWayBill"
                                                class="form-control" placeholder="0.00"/>
                                     </div>
                                 </div>
                                 &#160;
                                 <div class="form-group">
-                                    <p class="col-md-4" for="name">No of Cartoon:</p>
-                                    <div class="col-md-8">
-                                        <input type="number"
+                                    <p class="col-md-6" for="name">No of Cartoon:</p>
+                                    <div class="col-md-6">
+                                        <input type="number" th:field="*{noOfCartoon}"
                                                class="form-control" placeholder="0"/>
                                     </div>
                                 </div>
                                 &#160;
                                 <div class="form-group">
-                                    <p class="col-md-4" for="name">Cartoon Dimension:</p>
-                                    <div class="col-md-8">
-                                        <input type="number"
+                                    <p class="col-md-6" for="name">Cartoon Dimension:</p>
+                                    <div class="col-md-6">
+                                        <input type="number" th:field="*{cartoonDimension}"
                                                class="form-control" placeholder="0"/>
                                     </div>
                                 </div>
-                                &#160;
+                                &#160;&#160;&#160;&#160;
                             </div>
+
+
+                            <div class="col-md-12">
+
+                                <div class="col-md-3 spaceNeed">
+                                    <p for="name">Model</p>
+                                    <select th:field="*{model.id}" id="itemModel" class="selectpicker form-control" data-live-search="true">
+                                        <option value="0">-Select Model-</option>
+                                        <option th:each="itemModel : ${itemModelList}" th:value="${itemModel.id}"
+                                                th:text="${itemModel.modelCode}"></option>
+                                    </select>
+                                </div>
+
+                                <div class="col-md-3 spaceNeed">
+                                    <p for="name">Quantity</p>
+                                    <input type="text" id="quantity" th:field="*{quantity}"
+                                           class="form-control" placeholder="0" disabled="disabled"/>
+                                </div>
+
+                                <div class="col-md-3 spaceNeed">
+                                    <p for="name">Rate</p>
+                                    <input type="text" id="rate" value="0.0" th:field="*{rate}"
+                                           class="form-control" placeholder="0" disabled="disabled"/>
+                                </div>
+
+                                <div class="col-md-3 spaceNeed">
+                                    <p for="name">Total</p>
+                                    <input type="text" id="total" value="0.0" th:field="*{total}"
+                                           class="form-control" placeholder="0" disabled="disabled"/>
+
+                                </div>
+
+                            </div>
+
+                            <div class="col-md-12 spaceNeed">
+
+                                <div class="col-md-6"></div>
+
+                                <div class="col-md-6 spaceNeed">
+                                    <div class="form-group">
+                                        <p class="col-md-4 rightAlign" for="name">Net Payment:</p>
+                                        <div class="col-md-6">
+                                            <input type="text" id="netPayment" value="0.0" th:field="*{netPayment}"
+                                                   class="form-control" placeholder="0" disabled="disabled"/>
+                                        </div>
+                                    </div>
+                                    &#160;
+                                    <div class="form-group">
+                                        <p class="col-md-4 rightAlign" for="name">Due:</p>
+                                        <div class="col-md-6">
+                                            <input type="text" id="due" value="0.0" th:field="*{due}"
+                                                   class="form-control" placeholder="0" disabled="disabled"/>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="col-md-12">
+                                &#160;
+                                &#160;
+                                <div class="form-group">
+                                    <div class="col-md-offset-5 col-md-12">
+                                        <input type="submit" class="btn btn-primary" value="Next"/>
+
+                                    </div>
+                                </div>
+                            </div>
+                            </form>
                         </div>
                     </div>
+
+
                 </div>
             </div>
         </div>

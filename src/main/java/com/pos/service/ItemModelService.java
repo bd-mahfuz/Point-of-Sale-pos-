@@ -13,4 +13,6 @@ public interface ItemModelService {
     List<ItemModel> getAllItemModels();
     ItemModel getItemModel(int itemModelId);
     List<ItemModel> getItemModelByProduct(ProductItem productItem);
+
+    int getQuantity(int itemModelId);
 }
