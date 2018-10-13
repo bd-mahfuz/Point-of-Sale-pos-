@@ -18,6 +18,7 @@ public class User {
     private String email;
     @Column(name = "phone_number")
     private String phoneNumber;
+    //private List<Address> addresses;
     private String password;
     @Transient
     private String confirmPassword;
@@ -35,6 +36,7 @@ public class User {
     public void setAddress(Address address) {
         this.address = address;
     }
+
     public int getId() {
         return id;
     }

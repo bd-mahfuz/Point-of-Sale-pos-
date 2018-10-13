@@ -1,27 +1,12 @@
 package com.pos.dto;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-
-@Entity
 public class Address {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private String state;
     private String city;
     private String country;
-    private String addressLine;
-
-    public String getAddressLine() {
-        return addressLine;
-    }
-
-    public void setAddressLine(String addressLine) {
-        this.addressLine = addressLine;
-    }
+    private boolean isPermanentAddress;
+    private boolean isCurrentAddress;
 
     public int getId() {
         return id;
@@ -55,4 +40,19 @@ public class Address {
         this.country = country;
     }
 
+    public boolean isPermanentAddress() {
+        return isPermanentAddress;
+    }
+
+    public void setPermanentAddress(boolean permanentAddress) {
+        isPermanentAddress = permanentAddress;
+    }
+
+    public boolean isCurrentAddress() {
+        return isCurrentAddress;
+    }
+
+    public void setCurrentAddress(boolean currentAddress) {
+        isCurrentAddress = currentAddress;
+    }
 }
