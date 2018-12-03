@@ -6,12 +6,12 @@ import com.pos.dto.SalesInvoice;
 import java.util.List;
 
 public interface SalesInvoiceDao {
-    public boolean add(SalesInvoice salesInvoice);
-    public boolean update(SalesInvoice salesInvoice);
-    public boolean delete(int id);
+    boolean add(SalesInvoice salesInvoice);
+    boolean update(SalesInvoice salesInvoice);
+    boolean delete(int id);
 
-    public List<SalesInvoice> getAll();
-    public SalesInvoice get(int id);
+    List<SalesInvoice> getAll();
+    SalesInvoice get(int id);
 
-
+    SalesInvoice getSalesInvoiceByInvoiceNo(int sellInvoiceNo);
 }

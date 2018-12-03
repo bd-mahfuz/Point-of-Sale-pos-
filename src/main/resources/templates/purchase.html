@@ -20,8 +20,8 @@
 
            <!-- <p th:text="${param.message[0]}"></p>-->
 
-            <div th:if="${#strings.isEmpty(message)!=true}">
-                <h4 th:text="${param.message[0]}" class="message"></h4>
+            <div th:if="${#httpServletRequest.getParameter('message') != null}">
+                <h4 th:text="${#httpServletRequest.getParameter('message')}" class="message"></h4>
             </div>
 
             <div class="row">

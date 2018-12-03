@@ -44,4 +44,11 @@ public class PurchaseTest {
 
     }
 
+    @Test
+    public void testGetAllPurchaseByModel() {
+        ItemModel itemModel = itemModelService.getItemModel(1);
+        assertEquals("failed to get purchases", 3, purchaseService.getAllPurchaseByItemModel(itemModel).size());
+
+    }
+
 }

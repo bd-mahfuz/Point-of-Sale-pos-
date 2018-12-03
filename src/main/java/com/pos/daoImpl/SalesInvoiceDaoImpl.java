@@ -74,4 +74,22 @@ public class SalesInvoiceDaoImpl implements SalesInvoiceDao{
             return null;
         }
     }
+
+    @Override
+    public SalesInvoice getSalesInvoiceByInvoiceNo(int sellInvoiceNo) {
+        String hql = "from SalesInvoice where sellInvoice = :sellInvoice";
+        try {
+            List<SalesInvoice> salesInvoices =  sessionFactory.getCurrentSession().createQuery(hql)
+                    .setParameter("sellInvoice", sellInvoiceNo)
+                    .list();
+            if (salesInvoices.size() > 0) {
+                return salesInvoices.get(0);
+            } else {
+                return null;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 }

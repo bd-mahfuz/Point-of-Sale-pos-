@@ -1,9 +1,12 @@
 package com.pos.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.pos.utility.DateUtil;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "sales_invoice")
@@ -13,11 +16,12 @@ public class SalesInvoice {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     @Column(name = "sell_invoice")
-    private String sellInvoice;
+    private int sellInvoice;
     @Column(name = "sell_type")
     private String sellType;
-    @Column(name = "available_qty")
-    private int availableQty;
+    @Column(name = "available_return_qty")
+    private int availableQty; // its available return quantity
+    @Column(name = "sell_qty")
     private int quantity;
     private String unit;
     private double rate;
@@ -33,9 +37,39 @@ public class SalesInvoice {
     private Date date = new Date();
 
     @OneToOne
+    @JoinColumn(name = "customer_id")
     private Customer customer;
     @OneToOne
+    @JoinColumn(name = "model_id")
     private ItemModel model;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "salesInvoice", cascade = CascadeType.ALL)
+    //@JoinTable(joinColumns = @JoinColumn("salesInvoice_Id"))
+    private List<MacList> macLists = new ArrayList<>();
+
+
+    // ---------- transient field for macList ----------
+    //@JsonIgnore
+    @Transient
+    List<String> macIDs = new ArrayList<>();
+
+
+    public List<String> getMacIDs() {
+        return macIDs;
+    }
+
+    public void setMacIDs(List<String> macIDs) {
+        this.macIDs = macIDs;
+    }
+
+    public List<MacList> getMacLists() {
+        return macLists;
+    }
+
+    public void setMacLists(List<MacList> macLists) {
+        this.macLists = macLists;
+    }
 
     public Date getDate() {
         return date;
@@ -54,11 +88,11 @@ public class SalesInvoice {
         this.id = id;
     }
 
-    public String getSellInvoice() {
+    public int getSellInvoice() {
         return sellInvoice;
     }
 
-    public void setSellInvoice(String sellInvoice) {
+    public void setSellInvoice(int sellInvoice) {
         this.sellInvoice = sellInvoice;
     }
 

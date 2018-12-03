@@ -1,19 +1,24 @@
 package com.pos.service;
 
+import com.pos.dao.SalesInvoiceDao;
 import com.pos.dto.SalesInvoice;
 
 import java.util.List;
 
-public interface SalesInvoiceService {
+public interface SalesInvoiceService{
 
-    public boolean addSalesInvoice(SalesInvoice salesInvoice);
-    public boolean updateSalesInvoice(SalesInvoice salesInvoice);
-    public boolean deleteSalesInvoice(int id);
+    boolean addSalesInvoice(SalesInvoice salesInvoice);
+    boolean addSalesInvoice(SalesInvoice salesInvoice, List<String> macIds);
+    boolean updateSalesInvoice(SalesInvoice salesInvoice);
+    boolean deleteSalesInvoice(int id);
 
-    public List<SalesInvoice> getAllSalesInvoice();
-    public SalesInvoice getSalesInvoice(int id);
+    List<SalesInvoice> getAllSalesInvoice();
+    SalesInvoice getSalesInvoice(int id);
 
-    public double getSellPriceByItemModel(int modelId);
-    public double getTotalSellByQty(int modelId, int quantity);
+    double getSellPriceByItemModel(int modelId);
+    double getTotalSellByQty(int modelId, int quantity);
+
+    SalesInvoice getSalesInvoiceByInvoiceNo(int sellInvoiceNo);
+
 
 }

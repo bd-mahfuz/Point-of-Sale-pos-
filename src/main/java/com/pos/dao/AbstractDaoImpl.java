@@ -33,13 +33,7 @@ public class AbstractDaoImpl<T> extends HibernateDaoSupport implements AbstractD
 
 	@Override
 	public boolean save(T obj) {
-		try {
-			sessionFactory.getCurrentSession().save(obj);
-			return true;
-		} catch (Exception e) {
-			e.printStackTrace();
-			return false;
-		}
+		return false;
 	}
 
 	@Override

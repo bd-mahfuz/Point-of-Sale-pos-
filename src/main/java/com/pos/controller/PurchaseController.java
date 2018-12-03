@@ -57,7 +57,11 @@ public class PurchaseController {
 
     @RequestMapping(value = "/user/purchase", method = RequestMethod.POST)
     public String purchase(@ModelAttribute("purchase") Purchase purchase) {
+
+        // set availableQty as quantity
+        purchase.setAvailableQty(purchase.getQuantity());
         boolean isPurchase = purchaseService.addPurchase(purchase);
+
         String message = "";
         if (isPurchase) {
             message = "Product purchased successfully.";

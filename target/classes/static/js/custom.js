@@ -693,6 +693,18 @@ $(document).ready(function() {
 
 		var modelId = $(this).val();
 
+        //setting disabled field value for each time when changing
+        $('#discountS').val("0.0");
+        $('#dueS').val("0.0");
+
+        $('#rateS').val("");
+        $('#totalS').val("");
+        $('#netTotalS').val("");
+        $('#netTotalS').val("");
+        $('#paymentReceivedS').val("");
+
+        $('#quantity').val("");
+
 		if (modelId > 0) {
             // getting available quantity
             $.ajax({
@@ -701,22 +713,25 @@ $(document).ready(function() {
                 success: function (availableQty) {
                     $('#availablelQty').val(availableQty);
 
-                    $('#availablelQty').removeAttr('disabled');
+                    //$('#availablelQty').removeAttr('disabled');
                     $('#quantity').removeAttr('disabled');
 
                     // field effect for changing the quantity field
                     $('#quantity').change(function () {
 						var qty = $(this).val();
 						if (qty > 0) {
+
 							// enabling fields
-							$('#unit').removeAttr('disabled');
+                            $('#dueS').removeAttr('disabled');
+                            $('#discountS').removeAttr('disabled');
+                            $('#unit').removeAttr('disabled');
+							/*
 							$('#rateS').removeAttr('disabled');
 							$('#totalS').removeAttr('disabled');
-							$('#discountS').removeAttr('disabled');
 							$('#netTotalS').removeAttr('disabled');
 							$('#netTotalS').removeAttr('disabled');
 							$('#paymentReceivedS').removeAttr('disabled');
-							$('#dueS').removeAttr('disabled');
+							*/
 
 							// getting the sales price from controller using ajax
                             $.ajax({
@@ -782,6 +797,9 @@ $(document).ready(function() {
 											$('#discountS').change(function () {
 
 												var discount = $(this).val();
+                                                if (discount == '') {
+                                                    $(this).val('0.0')
+                                                }
 												var total = $('#totalS').val();
 												var dueAmount = $('#dueS').val();
 
@@ -798,6 +816,10 @@ $(document).ready(function() {
 											$('#dueS').change(function () {
 
                                                 var dueAmount = $(this).val();
+                                                // if
+                                                if (dueAmount == '') {
+                                                    $(this).val('0.0')
+												}
                                                 // update payment received with due change
                                                 $('#paymentReceivedS').val($('#netTotalS').val() - dueAmount);
 
@@ -821,23 +843,27 @@ $(document).ready(function() {
 						}
 						else {
 							// setting field as disabled
-                            $('#unit').attr('disabled', true);
+							$('#unit').attr('disabled', true);
+                            $('#dueS').attr('disabled', true);
+                            $('#discountS').attr('disabled', true);
+
+                            /*
                             $('#rateS').attr('disabled', true);
                             $('#totalS').attr('disabled', true);
-                            $('#discountS').attr('disabled', true);
                             $('#netTotalS').attr('disabled', true);
                             $('#netTotalS').attr('disabled', true);
                             $('#paymentReceivedS').attr('disabled', true);
-                            $('#dueS').attr('disabled', true);
+                            */
 
                             //setting disabled field value as empty
+                            $('#discountS').val("0.0");
+                            $('#dueS').val("0.0");
+
                             $('#rateS').val("");
                             $('#totalS').val("");
-                            $('#discountS').val("");
                             $('#netTotalS').val("");
                             $('#netTotalS').val("");
                             $('#paymentReceivedS').val("");
-                            $('#dueS').val("");
 
 
 						}
@@ -850,35 +876,95 @@ $(document).ready(function() {
 		}
 		else {
 			//setting field value as empty
-            $('#availablelQty').val("");
             $('#quantity').val("");
+            $('#dueS').val("0.0");
+            $('#discountS').val("0.0");
+            $('#availablelQty').val("");
+
             $('#rateS').val("");
             $('#totalS').val("");
-            $('#discountS').val("");
             $('#netTotalS').val("");
             $('#netTotalS').val("");
             $('#paymentReceivedS').val("");
-            $('#dueS').val("");
 
             // setting fields as disabled
-            $('#availablelQty').attr("disabled", true);
             $('#quantity').attr("disabled", true);
             $('#unit').attr('disabled', true);
+            $('#discountS').attr('disabled', true);
+            $('#dueS').attr('disabled', true);
+            /*
+            $('#availablelQty').attr("disabled", true);
+            $('#quantity').attr("disabled", true);
             $('#rateS').attr('disabled', true);
             $('#totalS').attr('disabled', true);
-            $('#discountS').attr('disabled', true);
             $('#netTotalS').attr('disabled', true);
             $('#netTotalS').attr('disabled', true);
             $('#paymentReceivedS').attr('disabled', true);
-            $('#dueS').attr('disabled', true);
+            */
 		}
     });
+
+
+	// ------------------------------ sales invoice confirm ------------------------------------------------
+	//var qty = $('#confirmQty').val();
+
+    var selecteParticularProduct = $('#selectParticularProduct');
+    //by default the select particular product should be hide
+    $('#sellFromHideWrapper').hide();
+    selecteParticularProduct.change(function () {
+        var isChecked = selecteParticularProduct.prop('checked');
+        //console.log("check :", isChecked);
+        if (isChecked) {
+            $('#sellFromHideWrapper').show();
+
+            var macListsPage = $('#unsoldMac');
+            if (macListsPage.length) {
+                var modelId = $('#modelId').val();
+                console.log("model", modelId);
+                $.ajax({
+                    type: "GET",
+                    url: "/all-unsold-mac/item-model/"+modelId,
+                    success: function (macLists) {
+
+                        for (var i = 0; i<macLists.length; i++) {
+                            var mac = macLists[i];
+                            //console.log("mac:", mac.macId);
+                            var option = new Option(mac.macId+"", mac.macId+"");
+                            //var selectElement = '<option value="'+mac.macId+'">'+mac.macId+'</option>';
+                            $('#unsoldMac').append($(option));
+                        }
+                        //refreshing select picker otherwise search feature will not work
+                        $('.selectpicker').selectpicker('refresh');
+                    },
+                    error: function (er) {
+                        console.log(er);
+                    }
+                });
+            }
+        } else  {
+            var len = $('#unsoldMac').length;
+            for (var i = 0; i< len; i++) {
+                $('#unsoldMac').remove();
+			}
+            $('#sellFromHideWrapper').hide();
+        }
+    });
+
+
 
 
 	// --------------------- return portion ------------------------------------------------------------
 
 
+    // by default all three table will be hidden
+    $('#purchaseReturnTable').hide();
+    $('#salesReturnTable').hide();
+    $('#returnWithMacTable').hide();
+    $('#sMessage').hide();
+    $('#pMessage').hide();
+    $('#mMessage').hide();
 
+    // hiding return type dropdown menu, its only will show when user click invoice radio button.
     $('#hideReturnType').hide();
 
     $('#searchWithMac').click(function () {
@@ -886,6 +972,7 @@ $(document).ready(function() {
         $('#searchKey').attr('placeholder', 'Mac');
     });
 
+    // some changes when click on invoice radio
     $('#searchWithInvoice').click(function () {
         $('#hideReturnType').slideDown();
         $('#searchKey').attr('placeholder', 'Sell Invoice');
@@ -897,6 +984,7 @@ $(document).ready(function() {
 
 				$('#searchKey').attr('placeholder', 'Sell Invoice');
 
+
 			}else {
                 $('#searchKey').attr('placeholder', 'Purchase Invoice');
 			}
@@ -905,7 +993,168 @@ $(document).ready(function() {
     });
 
 
+    // search mechanism------------------------
 
+	$('#returnSearchBtn').click(function () {
+        var invoiceNo = $('#searchKey').val();
+
+        // search with mac
+        if ($('#searchWithMac').prop('checked') == true) {
+            //console.log('mac');
+
+			var macId = $('#searchKey').val();
+            console.log(macId);
+            // getting the macList by the macId
+			$.ajax({
+				url: '/user/macList/by/'+macId,
+                type: 'GET',
+				success: function (data) {
+                    if (data == "" || data == null || data == undefined) {
+                        $('#returnWithMacTable').hide();
+                        $('#mMessage').show();
+                    } else {
+                        $('#returnWithMacTable').show();
+                        $('#mMessage').hide();
+
+                        console.log(data.sellStatus);
+					}
+                },
+				error: function (er) {
+					alert(er);
+                }
+			});
+
+
+        }
+
+        //search with invoice
+        if ($('#searchWithInvoice').prop('checked') == true) {
+            //console.log("invoice");
+
+            var returnType = $('#returnType').val();
+            if (returnType == 'sell') {
+                //console.log("data: ");
+                $('#purchaseReturnTable').hide();
+                $.ajax({
+                    url: "/invoice/"+invoiceNo+"/sell-info",
+                    type: "GET",
+                    success: function (salesInvoice) {
+                        //console.log("data: "+salesInvoice);
+
+						if (salesInvoice == "" || salesInvoice == null || salesInvoice == undefined) {
+                            //console.log("empty");
+                            $('#salesReturnTable').hide();
+                            $('#sMessage').show();
+						} else {
+                            $('#sMessage').hide();
+                            $('#salesReturnTable').show();
+
+                            if (parseInt(salesInvoice.quantity ) != 0) {
+                                $('#sDate').text("Date: "+getFormatedDate(new Date()));
+                                $('#customerName').text("Customer Name: "+salesInvoice.customer.name);
+                                $('#salesModelName').text(salesInvoice.model.productItem.productItemName);
+                                $('#salesModelCode').text(salesInvoice.model.modelCode);
+                                $('#salesAvQty').text(salesInvoice.availableQty+" pcs");
+                                $('#salesRate').text(salesInvoice.rate);
+
+
+                                $('#returnSellBtn').click(function () {
+                                    var quantity = $('#sellReturnQty').val();
+                                    $('#sellReturnUrl').attr('href', "/user/return-sell/"+salesInvoice.id+"/quantity/"+quantity);
+                                });
+							} else {
+                                $('#salesAvQty').text("Already Returned");
+                                $('#salesAvQty').css('color', 'red');
+                                $('#returnSellBtn').hide();
+                                $('#sellReturnQty').hide();
+
+                                $('#sDate').text("Date: "+new Date());
+                                $('#customerName').text("Customer Name: "+salesInvoice.customer.name);
+                                $('#salesModelName').text(salesInvoice.model.productItem.productItemName);
+                                $('#salesModelCode').text(salesInvoice.model.modelCode);
+                                $('#salesRate').text(salesInvoice.rate);
+							}
+						}
+                    },
+                    error: function (e) {
+                        console.log(e);
+                        alert(e);
+                    }
+                });
+
+            }else {
+                $('#salesReturnTable').hide();
+                $('#pMessage').show();
+
+            	$.ajax({
+					url: '/invoice/'+invoiceNo+'/purchase-info',
+					type: 'GET',
+					success : function (purchase) {
+                        if (purchase == "" || purchase == null || purchase == undefined) {
+                            console.log("empty");
+                            $('#purchaseReturnTable').hide();
+                            $('#pMessage').show();
+                        } else {
+                            $('#pMessage').hide();
+                            $('#purchaseReturnTable').show();
+
+                            if (parseInt(purchase.quantity) != 0) {
+                                $('#pDate').text("Date: "+new Date());
+                                $('#supplierName').text("Supplier Name: "+purchase.supplier.name);
+                                $('#purchaseModelName').text(purchase.model.productItem.productItemName);
+                                $('#purchaseModelCode').text(purchase.model.modelCode);
+                                $('#purchaseAvQty').text(purchase.availableQty+" pcs"); // getting current available qty
+                                $('#purchaseRate').text(purchase.rate);
+
+
+                                $('#purchaseReturnBtn').click(function () {
+                                    var quantity = $('#purchaseReturnQty').val();
+                                    $('#purchaseReturnUrl').attr('href', "/user/return-purchase/"+purchase.id+"/quantity/"+quantity);
+                                });
+                            }
+						}
+                    },
+					error: function (er) {
+						console.log(er);
+						alert(er);
+                    }
+				});
+
+
+            }
+
+
+
+        }
+
+    });
+
+
+
+
+
+	function printLayer(layer) {
+        var generator = window.open(",'name,");
+        var layerText = document.getElementById(layer);
+        generator.document.write(layerText.innerHTML.replace("Print Me"))
+
+        generator.document.close();
+
+        generator.print();
+        generator.close();
+    }
+    
+    function getFormatedDate(date) {
+
+		var months = ['Jan', 'Feb', "Mar", 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+		var day = date.getDate();
+		var monthIndex = date.getMonth();
+		var year = date.getFullYear();
+
+		return day+" "+months[monthIndex]+" "+ year;
+
+    }
 
 
 

@@ -14,6 +14,10 @@ public interface PurchaseDao {
     List<Purchase> getAll();
     Purchase get(int id);
 
+    Purchase getPurchaseByInvoiceNo(int invoiceNo);
+
+    List<Purchase> getAllPurchaseByItemModel(ItemModel itemModel);
+
 
 
 }

@@ -22,7 +22,10 @@ public class Purchase {
     private int noOfCartoon;
     @Column(name = "cartoon_dimension")
     private int cartoonDimension;
+    @Column(name = "purchase_quantity")
     private int quantity;
+    @Column(name = "available_qty")
+    private int availableQty;
     private double rate;
     private double total;
     @Column(name = "net_payment")
@@ -36,6 +39,15 @@ public class Purchase {
     private Supplier supplier;
     @OneToOne
     private ItemModel model;
+
+
+    public int getAvailableQty() {
+        return availableQty;
+    }
+
+    public void setAvailableQty(int availableQty) {
+        this.availableQty = availableQty;
+    }
 
     public Date getDate() {
         return date;

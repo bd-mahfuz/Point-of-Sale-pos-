@@ -2,16 +2,13 @@ package com.pos.controller;
 
 import com.pos.dao.CustomerDao;
 import com.pos.dao.ProductItemDao;
-import com.pos.dto.Customer;
-import com.pos.dto.ItemModel;
-import com.pos.dto.ProductItem;
-import com.pos.dto.Supplier;
+import com.pos.dto.*;
 import com.pos.service.CustomerService;
 import com.pos.service.ItemModelService;
+import com.pos.service.MacListService;
 import com.pos.service.SupplierService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.ControllerAdvice;
-import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -29,6 +26,9 @@ public class GlobalController {
 
     @Autowired
     CustomerService customerService;
+
+    @Autowired
+    MacListService macListService;
 
     @ModelAttribute("productList")
     public List<ProductItem> getAllProducts() {
@@ -49,4 +49,5 @@ public class GlobalController {
     public List<Customer> getAllCustomer() {
         return customerService.getAllCustomer();
     }
+
 }

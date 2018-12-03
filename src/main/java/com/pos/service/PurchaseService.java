@@ -17,4 +17,7 @@ public interface PurchaseService {
     double getBuyPriceByItemModel(int modelId);
     double getTotalPurchase(int modelId, int quantity);
 
+    //invoiceNo means salesInvoice
+    Purchase getPurchaseByInvoiceNo(int invoiceNo);
+    List<Purchase> getAllPurchaseByItemModel(ItemModel itemModel);
 }

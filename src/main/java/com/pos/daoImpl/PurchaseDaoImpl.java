@@ -75,5 +75,36 @@ public class PurchaseDaoImpl implements PurchaseDao {
         }
     }
 
+    @Override
+    public Purchase getPurchaseByInvoiceNo(int invoiceNo) {
+        try {
+            List<Purchase> purchases =  sessionFactory.getCurrentSession()
+                    .createQuery("from Purchase where invoiceNo = :invoiceNo")
+                    .setParameter("invoiceNo", invoiceNo)
+                    .list();
+            if (purchases.size() > 0) {
+                return purchases.get(0);
+            } else {
+                return null;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    @Override
+    public List<Purchase> getAllPurchaseByItemModel(ItemModel itemModel) {
+        try {
+            return sessionFactory.getCurrentSession()
+                    .createQuery("from Purchase where model = :model")
+                    .setParameter("model", itemModel)
+                    .list();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
 
 }

@@ -14,6 +14,21 @@ $(document).ready(function(){
         }
     });
 
+    // ------- custom validator method --------------
+    $.validator.addMethod('lessThan', function (value, element, param) {
+        return this.optional(element) || parseInt(value) <= parseInt($(param).text());
+    }, 'Quantity should not be 0 and greater than Av.Qty!');
+
+    $.validator.addMethod('lessThanAvQty', function (value, element, param) {
+        return this.optional(element) || parseInt(value) <= parseInt($(param).val());
+    }, 'Quantity should not be 0 and greater than Av.Qty!');
+
+
+    $.validator.addMethod('greaterThan', function (value, element, param) {
+        return this.optional(element) || parseInt(value) > parseInt(param);
+    }, 'Quantity should be greater than 0!');
+
+
 //------------------------- validate supplier form ------------------------------------
     var $supplierForm = $('#supplierForm');
     if($supplierForm.length) {
@@ -296,5 +311,101 @@ $(document).ready(function(){
 
     }
 
+    // ----------------------- validation of sales form -----------------------------------------
+
+    var $salesForm = $('#salesForm');
+    if ($salesForm.length) {
+        $salesForm.validate({
+            rules: {
+                "customer.id": {
+                    required: true,
+                },
+                "model.id": {
+                    required: true,
+                },
+                sellInvoice: {
+                    required: true,
+                },
+                availableQty: {
+                    required: true,
+                    min: 1
+                },
+                quantity: {
+                    required: true,
+                    lessThanAvQty: "#availablelQty",
+                    greaterThan : '0'
+
+                }
+            },
+            messages: {
+                "customer.id": {
+                    required: "Please enter customer name!",
+                },
+                "model.id": {
+                    required: "Please enter model name!",
+                },
+                sellInvoice: {
+                    required: "Please enter sales invoice number!",
+                },
+                availableQty: {
+                    min: "Please select the model, this field should not be 0"
+                },
+                quantity: {
+                    lessThanAvQty: "Quantity should not be greater than Av.Qty!",
+                    greaterThan: "Quantity should not be less than 1!",
+                }
+            }
+        });
+    }
+
+
+
+    //----------------------------- return validator -------------------------------------------------
+
+
+
+    var $returnForm = $('#sale-return-form');
+    if ($returnForm.length) {
+
+        $returnForm.validate({
+           rules:{
+               returnQty : {
+                   required : true,
+                   lessThan : '#salesAvQty',
+                   greaterThan: '0'
+               }
+           } ,
+           messages: {
+               returnQty : {
+                   required : "This field should net be empty!",
+                   lessThan: "Quantity should not be 0 and greater than Av.Qty!",
+                   greaterThan: "Quantity should be greater equal 0!"
+               }
+
+           }
+        });
+    }
+
+
+    var $returnPurchaseForm = $('#purchase-form');
+    if ($returnPurchaseForm.length) {
+        $returnPurchaseForm.validate({
+           rules: {
+
+               returnPQty: {
+                   required : true,
+                   lessThan : '#purchaseAvQty',
+                   greaterThan: '0'
+               }
+           },
+           message:{
+               returnQty : {
+                   required : "This field should net be empty!",
+                   lessThan: "Quantity should not be 0 and greater than Av.Qty!",
+                   greaterThan: "Quantity should be greater equal 0!"
+               }
+           }
+        });
+    }
 
 });

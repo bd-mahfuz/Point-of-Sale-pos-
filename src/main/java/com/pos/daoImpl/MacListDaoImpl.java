@@ -1,9 +1,7 @@
 package com.pos.daoImpl;
 
 import com.pos.dao.MacListDao;
-import com.pos.dto.ItemModel;
-import com.pos.dto.ItemModelPrice;
-import com.pos.dto.MacList;
+import com.pos.dto.*;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -78,11 +76,45 @@ public class MacListDaoImpl implements MacListDao{
     }
 
     @Override
+    public MacList getByMacId(String macId) {
+        try {
+            List<MacList> macLists =  sessionFactory.getCurrentSession()
+                    .createQuery("from MacList where macId = :macId")
+                    .setParameter("macId", macId)
+                    .list();
+
+            if (macLists.size() > 0) {
+                return macLists.get(0);
+            } else {
+                return null;
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    @Override
     public List<MacList> getAllMacByItemModel(ItemModel itemModel) {
         try {
             return sessionFactory.getCurrentSession()
                     .createQuery("from MacList where itemModel = :itemModel")
                     .setParameter("itemModel", itemModel)
+                    .list();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+
+    @Override
+    public List<MacList> getAllMacBySalesInvoice(SalesInvoice salesInvoice) {
+        try {
+            return sessionFactory.getCurrentSession()
+                    .createQuery("from MacList where salesInvoice = :salesInvoice")
+                    .setParameter("salesInvoice", salesInvoice)
                     .list();
         } catch (Exception e) {
             e.printStackTrace();
@@ -117,4 +149,21 @@ public class MacListDaoImpl implements MacListDao{
             return null;
         }
     }
+
+    @Override
+    public List<MacList> getAllUnsoldMavByPurchase(Purchase purchase) {
+        String hql = "from MacList where purchase = :purchase and sellStatus = :sellStatus";
+        try {
+            return sessionFactory.getCurrentSession().createQuery(hql)
+                    .setParameter("purchase", purchase)
+                    .setParameter("sellStatus", "Unsold")
+                    .list();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+
 }

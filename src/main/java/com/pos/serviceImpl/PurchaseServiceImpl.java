@@ -40,7 +40,7 @@ public class PurchaseServiceImpl implements PurchaseService {
         if (isUpdated) {
             boolean isAdded = purchaseDao.add(purchase);
 
-            if (isAdded) {
+            if (isAdded && (!itemModel.getModelType().equals("Non MAC"))) {
                 // adding mac list for purchased item model
                 int quantity = purchase.getQuantity();
                 for (int i = 0; i< quantity; i++) {
@@ -51,9 +51,9 @@ public class PurchaseServiceImpl implements PurchaseService {
                     macList.setPurchase(purchase);
                     macListDao.add(macList);
                 }
-                return true;
+
             }
-            return false;
+            return true;
         }
 
         return false;
@@ -92,6 +92,15 @@ public class PurchaseServiceImpl implements PurchaseService {
         return (buyPrice * quantity);
     }
 
+    @Override
+    public Purchase getPurchaseByInvoiceNo(int invoiceNo) {
+        return purchaseDao.getPurchaseByInvoiceNo(invoiceNo);
+    }
+
+    @Override
+    public List<Purchase> getAllPurchaseByItemModel(ItemModel itemModel) {
+        return purchaseDao.getAllPurchaseByItemModel(itemModel);
+    }
 
 
 }

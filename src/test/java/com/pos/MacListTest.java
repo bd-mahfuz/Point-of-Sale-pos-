@@ -1,8 +1,10 @@
 package com.pos;
 
 import com.pos.dto.ItemModel;
+import com.pos.dto.Purchase;
 import com.pos.service.ItemModelService;
 import com.pos.service.MacListService;
+import com.pos.service.PurchaseService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +22,8 @@ public class MacListTest {
 
     @Autowired
     private MacListService macListService;
+    @Autowired
+    private PurchaseService  purchaseService;
 
     @Test
     public void testDeleteMacListByModel() {
@@ -33,8 +37,15 @@ public class MacListTest {
     @Test
     public void testGetAllUnSoldMacByItemModel() {
         ItemModel itemModel = itemModelService.getItemModel(1);
-        assertEquals("Failed to delete maclist using itemModel", 2,
+        assertEquals("Failed to get maclists using itemModel", 2,
                 macListService.getAllUnSoldMacByItemModel(itemModel).size());
+    }
+
+    @Test
+    public void testGetAllUnSoldMacByPurchase() {
+        Purchase purchase = purchaseService.getPurchase(1);
+        assertEquals("Failed to get maclists using purchsase", 2,
+                macListService.getAllUnsoldMavByPurchase(purchase).size());
     }
 
 }
