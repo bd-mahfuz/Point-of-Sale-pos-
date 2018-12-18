@@ -52,15 +52,15 @@
         <div id="page-wrapper">
 
             <div th:if="${adminClickHome == true}">
-                <div th:replace="/fragments/adminHome :: adminHome"></div>
+                <div th:replace="fragments/adminHome :: adminHome"></div>
             </div>
 
             <div th:if="${adminClickAddUser == true}">
-                <div th:replace="/fragments/addUser :: addUser"></div>
+                <div th:replace="fragments/addUser :: addUser"></div>
             </div>
 
             <div th:if="${adminClickAddAddress == true}">
-                <div th:replace="/fragments/addUserAddress :: addAddressFragment"></div>
+                <div th:replace="fragments/addUserAddress :: addAddressFragment"></div>
             </div>
         </div>
         <!-- /#page-wrapper -->
