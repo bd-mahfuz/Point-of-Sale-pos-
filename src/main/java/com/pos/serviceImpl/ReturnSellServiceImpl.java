@@ -1,17 +1,14 @@
 package com.pos.serviceImpl;
 
 import com.pos.dao.ReturnSellDao;
+import com.pos.dao.SalesInvoiceDao;
 import com.pos.daoImpl.ReturnSellDaoImpl;
-import com.pos.dto.ItemModel;
-import com.pos.dto.MacList;
-import com.pos.dto.SalesInvoice;
-import com.pos.service.ItemModelService;
-import com.pos.service.MacListService;
-import com.pos.service.ReturnSellService;
-import com.pos.service.SalesInvoiceService;
+import com.pos.dto.*;
+import com.pos.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -21,20 +18,25 @@ public class ReturnSellServiceImpl extends ReturnSellDaoImpl implements ReturnSe
     private ItemModelService itemModelService;
 
     @Autowired
+    private PurchaseService purchaseService;
+
+    @Autowired
     private MacListService macListService;
 
     @Autowired
-    private SalesInvoiceService salesInvoiceService;
+    private SalesInvoiceDao salesInvoiceDao;
 
     @Override
     public boolean returnSell(SalesInvoice salesInvoice, int returnQuantity) {
 
         int currentQty = salesInvoice.getAvailableQty();
-        ItemModel itemModel = itemModelService.getItemModel(salesInvoice.getModel().getId());
+        salesInvoice.setAvailableQty((currentQty - returnQuantity));
+        salesInvoice.setMacLists(null);
+        boolean isSellUpdate = salesInvoiceDao.update(salesInvoice);
 
+        ItemModel itemModel = itemModelService.getItemModel(salesInvoice.getModel().getId());
         //returning the quantity
         itemModel.setQuantity(returnQuantity + itemModel.getQuantity());
-
         //updating itemModel with quantity
         boolean isUpdated = itemModelService.updateItemModel(itemModel);
 
@@ -45,6 +47,12 @@ public class ReturnSellServiceImpl extends ReturnSellDaoImpl implements ReturnSe
             if (macLists.size() > 0) {
                 for (int i = 0; i < returnQuantity; i++) {
                     MacList macList = macLists.get(i);
+
+                    // update purchase table also for update available_qty
+                    Purchase purchase = macList.getPurchase();
+                    purchase.setAvailableQty(purchase.getAvailableQty() + (i+1));
+                    purchaseService.updatePurchase(purchase);
+
                     macList.setSellStatus("Unsold");
                     macList.setSalesInvoice(null);
                     macListService.update(macList);
@@ -62,11 +70,19 @@ public class ReturnSellServiceImpl extends ReturnSellDaoImpl implements ReturnSe
             isSellUpdate = updateSalesInvoice(salesInvoice);
         }*/
 
-        salesInvoice.setAvailableQty((currentQty - returnQuantity));
-        salesInvoice.setMacLists(macLists);
-        boolean isSellUpdate = salesInvoiceService.updateSalesInvoice(salesInvoice);
 
-        if (isSellUpdate && isUpdated) {
+        // add the return info into sellReturn table
+        ReturnSell returnSell = new ReturnSell();
+        returnSell.setReturnQty(returnQuantity);
+        returnSell.setAvailableQty(currentQty);
+        returnSell.setDate(new Date());
+        returnSell.setSalesInvoice(salesInvoice);
+
+        boolean isAdded = add(returnSell);
+
+
+
+        if (isAdded && isSellUpdate && isUpdated) {
             return true;
         }
         return false;

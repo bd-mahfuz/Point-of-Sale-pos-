@@ -16,7 +16,7 @@
                             <strong>Edit Customer Info</strong>
                         </div>
                         <div class="panel-body">
-                            <form id="customerForm" th:action="@{/user/updateCustomer}" method="post" th:object="${customer}" id="customerForm">
+                            <form id="customerForm" th:action="@{/user/updateCustomer}" method="post" th:object="${customer}">
                                 <div class="form-group">
                                     <p class="col-md-4" for="name">Customer Name:</p>
                                     <div class="col-md-8">

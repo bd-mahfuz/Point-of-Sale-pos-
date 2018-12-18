@@ -33,6 +33,8 @@ public class ReturnPurchaseServiceImpl extends ReturnPurchaseDaoImpl implements 
         // updating item model
         itemModel.setQuantity(itemModel.getQuantity() - returnQty);
         boolean isUpdateItemModel = itemModelService.updateItemModel(itemModel);
+        System.out.println(isUpdateItemModel);
+
 
         // updating purchase table with availableQty
         purchase.setAvailableQty(purchase.getAvailableQty() - returnQty);

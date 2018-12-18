@@ -998,6 +998,15 @@ $(document).ready(function() {
     // search mechanism------------------------
 
 	$('#returnSearchBtn').click(function () {
+
+		$('#purchaseReturnTable').hide();
+        $('#salesReturnTable').hide();
+        $('#returnWithMacTable').hide();
+        $('#sMessage').hide();
+        $('#pMessage').hide();
+        $('#mMessage').hide();
+
+
         var invoiceNo = $('#searchKey').val();
 
         // search with mac
@@ -1051,7 +1060,7 @@ $(document).ready(function() {
                             $('#sMessage').hide();
                             $('#salesReturnTable').show();
 
-                            if (parseInt(salesInvoice.quantity ) != 0) {
+                            if (parseInt(salesInvoice.availableQty ) != 0) {
                                 $('#sDate').text("Date: "+getFormatedDate(new Date()));
                                 $('#customerName').text("Customer Name: "+salesInvoice.customer.name);
                                 $('#salesModelName').text(salesInvoice.model.productItem.productItemName);
@@ -1065,12 +1074,12 @@ $(document).ready(function() {
                                     $('#sellReturnUrl').attr('href', "/user/return-sell/"+salesInvoice.id+"/quantity/"+quantity);
                                 });
 							} else {
-                                $('#salesAvQty').text("Already Returned");
+                                $('#salesAvQty').text("All product is already returned!");
                                 $('#salesAvQty').css('color', 'red');
                                 $('#returnSellBtn').hide();
                                 $('#sellReturnQty').hide();
 
-                                $('#sDate').text("Date: "+new Date());
+                                $('#sDate').text("Date: "+getFormatedDate(new Date()));
                                 $('#customerName').text("Customer Name: "+salesInvoice.customer.name);
                                 $('#salesModelName').text(salesInvoice.model.productItem.productItemName);
                                 $('#salesModelCode').text(salesInvoice.model.modelCode);
@@ -1100,7 +1109,7 @@ $(document).ready(function() {
                             $('#pMessage').hide();
                             $('#purchaseReturnTable').show();
 
-                            if (parseInt(purchase.quantity) != 0) {
+                            if (parseInt(purchase.availableQty) != 0) {
                                 $('#pDate').text("Date: "+new Date());
                                 $('#supplierName').text("Supplier Name: "+purchase.supplier.name);
                                 $('#purchaseModelName').text(purchase.model.productItem.productItemName);
@@ -1113,6 +1122,17 @@ $(document).ready(function() {
                                     var quantity = $('#purchaseReturnQty').val();
                                     $('#purchaseReturnUrl').attr('href', "/user/return-purchase/"+purchase.id+"/quantity/"+quantity);
                                 });
+                            } else {
+                                $('#purchaseAvQty').text("All product is already sold or returned!");
+                                $('#purchaseAvQty').css('color', 'red');
+                                $('#purchaseReturnBtn').hide();
+                                $('#purchaseReturnQty').hide();
+
+                                $('#pDate').text("Date: "+getFormatedDate(new Date()));
+                                $('#supplierName').text("Supplier Name: "+purchase.supplier.name);
+                                $('#purchaseModelName').text(purchase.model.productItem.productItemName);
+                                $('#purchaseModelCode').text(purchase.model.modelCode);
+                                $('#purchaseRate').text(purchase.rate);
                             }
 						}
                     },

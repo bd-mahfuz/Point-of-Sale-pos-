@@ -127,7 +127,7 @@
                                             </tr>
 
                                             <tr>
-                                                <td id="">1</td>
+                                                <td>1</td>
                                                 <td id="purchaseModelName"></td>
                                                 <td id="purchaseModelCode"></td>
                                                 <td id="purchaseAvQty"></td>
@@ -252,14 +252,18 @@
 
                                             <tr>
                                                 <td>1</td>
-                                                <td>Laptop</td>
-                                                <td>4540s</td>
-                                                <td>10</td>
-                                                <td>10000</td>
+                                                <td id="mModelName"></td>
+                                                <td id="mModelCode"></td>
+                                                <td id="mAvQty"></td>
+                                                <td id="mRate"></td>
                                                 <td>
-                                                    <input type="text" class="form-control input-custom" placeholder="return qty"/>
-                                                    <input type="submit" value="Submit" class="btn btn-primary btn-xs btn-custom"/>
+                                                    <form id="return-form-withMac" onclick="return preventToSubmit()">
 
+                                                        <input type="number" id="mReturnQty" name="returnQty" class="form-control input-custom" placeholder="return qty"/>
+                                                        <button type="button" id="returnMacBtn" class="btn btn-primary btn-xs btn-custom" data-toggle="modal" data-target="#macModal">
+                                                            Submit
+                                                        </button>
+                                                    </form>
                                                 </td>
                                             </tr>
 
@@ -316,6 +320,27 @@
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                             <a href="" id="sellReturnUrl" class="btn btn-primary">OK</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- modal for return with mac -->
+            <div class="modal fade" id="macModal" tabindex="-1" role="dialog" aria-labelledby="macModalTitle" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h3 class="modal-title" id="macModalTitle">Confirmation</h3>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            Are you want to return the Sell!
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <a href="" id="macReturnUrl" class="btn btn-primary">OK</a>
                         </div>
                     </div>
                 </div>

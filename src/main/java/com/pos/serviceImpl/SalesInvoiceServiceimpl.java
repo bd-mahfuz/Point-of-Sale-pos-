@@ -41,21 +41,23 @@ public class SalesInvoiceServiceimpl implements SalesInvoiceService {
         int qty = salesInvoice.getQuantity();
 
         if (isUpdated) {
+            salesInvoice.setAvailableQty(salesInvoice.getQuantity());
             boolean isAdded =  salesInvoiceDao.add(salesInvoice);
 
             if (isAdded&& (!itemModel.getModelType().equals("Non MAC"))) {
                 List<MacList> macLists = macListService.getAllUnSoldMacByItemModel(itemModel);
+                MacList macList = null;
                 for (int i = 0; i < qty; i++) {
-                    MacList macList = macLists.get(i);
+                    macList = macLists.get(i);
                     macList.setSellStatus("Sold");
                     macList.setSalesInvoice(salesInvoice);
                     macListService.update(macList);
 
-                    // also update purchase table for availableQty
-                    Purchase purchase = purchaseService.getPurchase(macList.getPurchase().getId());
-                    purchase.setAvailableQty(purchase.getAvailableQty() - (i+1));
-                    purchaseService.updatePurchase(purchase);
                 }
+                // also update purchase table for availableQty
+                Purchase purchase = purchaseService.getPurchase(macList.getPurchase().getId());
+                purchase.setAvailableQty(purchase.getAvailableQty() - qty);
+                purchaseService.updatePurchase(purchase);
             }
             return isAdded;
         }
@@ -75,6 +77,7 @@ public class SalesInvoiceServiceimpl implements SalesInvoiceService {
         //int qty = salesInvoice.getQuantity();
 
         if (isUpdated) {
+            salesInvoice.setAvailableQty(salesInvoice.getQuantity());
             boolean isAdded =  salesInvoiceDao.add(salesInvoice);
 
             if (isAdded&& (!itemModel.getModelType().equals("Non MAC"))) {
