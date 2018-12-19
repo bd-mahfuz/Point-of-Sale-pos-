@@ -48,7 +48,7 @@ $(function () {
 				},
 				aoColumns: [
 					{
-						mData: 'id'
+						mData: 'serialNo'
 					},
 					{
 						mData: 'name'
@@ -133,7 +133,7 @@ $(function () {
 				},
 				aoColumns: [
 					{
-						mData: 'id'
+						mData: 'serialNo'
 					},
                     {
                         mData: 'name'
@@ -207,7 +207,7 @@ $(function () {
 				},
 				aoColumns: [
 					{
-						mData: "id"
+						mData: "serialNo"
 					},
 					{
 						mData: 'productItemName'
@@ -280,9 +280,9 @@ $(function () {
 					mDataProp: ''
 				},
 				aoColumns: [
-					{
-						mData: "id"
-					},
+                    {
+                        mData: 'serialNo',
+                    },
 					{
 						mData: "modelCode"
 					},
@@ -334,7 +334,7 @@ $(function () {
 				sScrollY: "200px",
 				bScrollCollapse: true
 
-			})
+			});
 		}
 
 		//----------------------- preparing data table for ItemModelPrice-----------------
@@ -349,7 +349,7 @@ $(function () {
 				},
 				aoColumns: [
 					{
-						mData: "id"
+						mData: "serialNo"
 					},
                     {
                         mData: "itemModel.modelCode"

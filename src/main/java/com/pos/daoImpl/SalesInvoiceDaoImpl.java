@@ -19,6 +19,7 @@ public class SalesInvoiceDaoImpl implements SalesInvoiceDao{
 
     @Override
     public boolean add(SalesInvoice salesInvoice) {
+        salesInvoice.setSerialNo(getAll().size() + 1);
         try {
             sessionFactory.getCurrentSession().persist(salesInvoice);
             return true;

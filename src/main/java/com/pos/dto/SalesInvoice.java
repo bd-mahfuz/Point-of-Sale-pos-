@@ -54,6 +54,15 @@ public class SalesInvoice {
     @Transient
     List<String> macIDs = new ArrayList<>();
 
+    @Column(name = "serial_no")
+    private int serialNo;
+    public int getSerialNo() {
+        return serialNo;
+    }
+
+    public void setSerialNo(int serialNo) {
+        this.serialNo = serialNo;
+    }
 
     public List<String> getMacIDs() {
         return macIDs;

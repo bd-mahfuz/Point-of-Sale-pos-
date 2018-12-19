@@ -20,6 +20,7 @@ public class ItemModelPriceDaoImpl implements ItemModelPriceDao {
 
     @Override
     public boolean add(ItemModelPrice itemModelPrice) {
+        itemModelPrice.setSerialNo(getAll().size() + 1);
         try {
             sessionFactory.getCurrentSession().persist(itemModelPrice);
             return true;

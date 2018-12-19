@@ -19,6 +19,7 @@ public class MacListDaoImpl implements MacListDao{
 
     @Override
     public boolean add(MacList macList) {
+        macList.setSerialNo(getAll().size() + 1);
         try {
             sessionFactory.getCurrentSession().persist(macList);
             return true;

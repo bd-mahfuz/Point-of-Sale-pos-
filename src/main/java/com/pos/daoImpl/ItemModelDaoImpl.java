@@ -19,6 +19,7 @@ public class ItemModelDaoImpl implements ItemModelDao {
 
     @Override
     public boolean add(ItemModel itemModel) {
+        itemModel.setSerialNo(getAll().size() + 1);
         try {
             sessionFactory.getCurrentSession().persist(itemModel);
             return true;

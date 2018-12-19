@@ -19,6 +19,7 @@ public class PurchaseDaoImpl implements PurchaseDao {
 
     @Override
     public boolean add(Purchase purchase) {
+        purchase.setSerialNo(getAll().size() + 1);
         try {
                sessionFactory.getCurrentSession().persist(purchase);
                return true;

@@ -29,6 +29,16 @@ public class User {
     @OneToOne(cascade = CascadeType.ALL)
     private Address address;
 
+    @Column(name = "serial_no")
+    private int serialNo;
+    public int getSerialNo() {
+        return serialNo;
+    }
+
+    public void setSerialNo(int serialNo) {
+        this.serialNo = serialNo;
+    }
+
     public Address getAddress() {
         return address;
     }

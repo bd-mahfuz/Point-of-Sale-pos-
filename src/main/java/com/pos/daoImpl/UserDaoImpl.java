@@ -21,6 +21,7 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public boolean add(User user) {
+        user.setSerialNo(getAll().size() + 1);
         try {
             sessionFactory.getCurrentSession().save(user);
             return true;

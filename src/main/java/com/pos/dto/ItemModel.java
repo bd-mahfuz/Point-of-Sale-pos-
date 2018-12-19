@@ -12,6 +12,8 @@ public class ItemModel {
 	private int id;
 	@Column(name="model_type")
 	private String modelType;
+	@Column(name = "serial_no")
+	private int serialNo;
 	@Column(name="model_code")
 	private String modelCode;
 	private int quantity;
@@ -61,4 +63,11 @@ public class ItemModel {
 		this.notes = notes;
 	}
 
+	public int getSerialNo() {
+		return serialNo;
+	}
+
+	public void setSerialNo(int serialNo) {
+		this.serialNo = serialNo;
+	}
 }

@@ -26,6 +26,16 @@ public class Supplier {
 	private String web;
 	private String email;
 	private String notes;
+
+	@Column(name = "serial_no")
+	private int serialNo;
+	public int getSerialNo() {
+		return serialNo;
+	}
+
+	public void setSerialNo(int serialNo) {
+		this.serialNo = serialNo;
+	}
 	
 	public int getId() {
 		return id;

@@ -1,9 +1,6 @@
 package com.pos.dto;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Address {
@@ -14,6 +11,15 @@ public class Address {
     private String city;
     private String country;
     private String addressLine;
+    @Column(name = "serial_no")
+    private int serialNo;
+    public int getSerialNo() {
+        return serialNo;
+    }
+
+    public void setSerialNo(int serialNo) {
+        this.serialNo = serialNo;
+    }
 
     public String getAddressLine() {
         return addressLine;

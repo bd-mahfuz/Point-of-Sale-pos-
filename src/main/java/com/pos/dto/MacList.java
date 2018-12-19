@@ -24,6 +24,15 @@ public class MacList {
     @ManyToOne
     @JoinColumn(name = "sale_id")
     private SalesInvoice salesInvoice;
+    @Column(name = "serial_no")
+    private int serialNo;
+    public int getSerialNo() {
+        return serialNo;
+    }
+
+    public void setSerialNo(int serialNo) {
+        this.serialNo = serialNo;
+    }
 
     public String getSellStatus() {
         return sellStatus;

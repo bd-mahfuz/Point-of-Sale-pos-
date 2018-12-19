@@ -21,6 +21,7 @@ public class SupplierDaoImpl implements SupplierDao {
 
 	@Override
 	public boolean add(Supplier supplier) {
+		supplier.setSerialNo(getAll().size() + 1);
 		try{
 			sessionFactory.getCurrentSession().persist(supplier);
 			return true;

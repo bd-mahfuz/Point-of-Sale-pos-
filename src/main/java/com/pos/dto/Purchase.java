@@ -40,6 +40,15 @@ public class Purchase {
     @OneToOne
     private ItemModel model;
 
+    @Column(name = "serial_no")
+    private int serialNo;
+    public int getSerialNo() {
+        return serialNo;
+    }
+
+    public void setSerialNo(int serialNo) {
+        this.serialNo = serialNo;
+    }
 
     public int getAvailableQty() {
         return availableQty;

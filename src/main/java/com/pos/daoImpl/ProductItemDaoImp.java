@@ -20,6 +20,7 @@ public class ProductItemDaoImp implements ProductItemDao {
 	
 	@Override
 	public boolean add(ProductItem productItem) {
+		productItem.setSerialNo(getAll().size() + 1);
 		try {
 			sessionFactory.getCurrentSession().persist(productItem);
 			return true;

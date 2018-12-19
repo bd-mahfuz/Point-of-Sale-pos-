@@ -18,6 +18,7 @@ public class CustomerDaoImpl implements CustomerDao {
 
     @Override
     public boolean add(Customer customer) {
+        customer.setSerialNo(getAll().size() + 1);
         try{
             sessionFactory.getCurrentSession().persist(customer);
             return true;

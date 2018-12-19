@@ -24,6 +24,16 @@ public class ItemModelPrice {
     @Column(name = "start_date")
     private Date startDate = new Date();
 
+    @Column(name = "serial_no")
+    private int serialNo;
+    public int getSerialNo() {
+        return serialNo;
+    }
+
+    public void setSerialNo(int serialNo) {
+        this.serialNo = serialNo;
+    }
+
     public Date getStartDate() {
         return startDate;
     }
@@ -81,5 +91,6 @@ public class ItemModelPrice {
     public void setItemModel(ItemModel itemModel) {
         this.itemModel = itemModel;
     }
+
 
 }

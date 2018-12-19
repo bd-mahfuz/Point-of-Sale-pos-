@@ -22,6 +22,16 @@ public class ReturnPurchase {
     @JoinColumn(name = "purchase_id")
     private Purchase purchase;
 
+    @Column(name = "serial_no")
+    private int serialNo;
+    public int getSerialNo() {
+        return serialNo;
+    }
+
+    public void setSerialNo(int serialNo) {
+        this.serialNo = serialNo;
+    }
+
     public int getId() {
         return id;
     }

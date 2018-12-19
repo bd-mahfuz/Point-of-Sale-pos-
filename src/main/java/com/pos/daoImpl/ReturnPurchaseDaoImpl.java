@@ -40,6 +40,7 @@ public class ReturnPurchaseDaoImpl implements ReturnPurchaseDao{
 
     @Override
     public boolean add(ReturnPurchase returnPurchase) {
+        returnPurchase.setSerialNo(getAllReturnPurchase().size() + 1);
         try {
             sessionFactory.getCurrentSession().persist(returnPurchase);
             return true;

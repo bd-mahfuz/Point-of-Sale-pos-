@@ -18,6 +18,7 @@ public class ReturnSellDaoImpl implements ReturnSellDao{
 
     @Override
     public boolean add(ReturnSell returnSell) {
+        returnSell.setSerialNo(getAll().size() + 1);
         try{
 
             sessionFactory.getCurrentSession()
