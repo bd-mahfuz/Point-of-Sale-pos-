@@ -1019,15 +1019,72 @@ $(document).ready(function() {
 			$.ajax({
 				url: '/user/macList/by/'+macId,
                 type: 'GET',
-				success: function (data) {
-                    if (data == "" || data == null || data == undefined) {
+				success: function (macList) {
+                    if (macList == "" || macList == null || macList == undefined) {
                         $('#returnWithMacTable').hide();
                         $('#mMessage').show();
                     } else {
                         $('#returnWithMacTable').show();
                         $('#mMessage').hide();
 
-                        console.log(data.sellStatus);
+                        var sellStatus = macList.sellStatus;
+                        if (sellStatus == 'Sold') {
+                            var salesInvoice = macList.salesInvoice.sellInvoice;
+                        	// sales return
+							$("#title-mac").text("Sell Return Invoice Details");
+							// getting sell data using ajax
+							$.ajax({
+								url: "/invoice/"+salesInvoice+"/sell-info",
+								type: "GET",
+								success : function (salesInvoice) {
+                                    if (parseInt(salesInvoice.availableQty ) != 0) {
+                                        $('#mDate').text("Date: "+getFormatedDate(new Date()));
+                                        $('#scName').text("Customer Name: "+salesInvoice.customer.name);
+                                        $('#mModelName').text(salesInvoice.model.productItem.productItemName);
+                                        $('#mModelCode').text(salesInvoice.model.modelCode);
+                                        $('#mAvQty').text(salesInvoice.availableQty+" pcs");
+                                        $('#mRate').text(salesInvoice.rate);
+
+
+                                        $('#returnMacBtn').click(function () {
+                                        	$('#macReturnUrl').attr('href', "/user/return-sell/"+macId);
+                                        });
+                                    }
+                                },
+								error: function (er) {
+									alert(er);
+                                }
+							});
+
+						} else {
+                            var purchaseInvoice = macList.purchase.invoiceNo;
+
+                            // purchase return
+                            $("#title-mac").text("Purchase Return Invoice Details");
+                            //getting purchase data using ajax
+                            $.ajax({
+                                url: '/invoice/'+purchaseInvoice+'/purchase-info',
+                                type: "GET",
+                                success : function (purchase) {
+                                    if (parseInt(purchase.availableQty) != 0) {
+                                        $('#mDate').text("Date: "+getFormatedDate(new Date()));
+                                        $('#scName').text("Supplier Name: "+purchase.supplier.name);
+                                        $('#mModelName').text(purchase.model.productItem.productItemName);
+                                        $('#mModelCode').text(purchase.model.modelCode);
+                                        $('#mAvQty').text(purchase.availableQty+" pcs"); // getting current available qty
+                                        $('#mRate').text(purchase.rate);
+
+
+                                        $('#returnMacBtn').click(function () {
+                                            $('#macReturnUrl').attr('href', "/user/return-purchase/"+macId);
+                                        });
+                                    }
+                                },
+                                error: function (er) {
+                                    alert(er);
+                                }
+                            });
+						}
 					}
                 },
 				error: function (er) {
@@ -1102,7 +1159,7 @@ $(document).ready(function() {
 					type: 'GET',
 					success : function (purchase) {
                         if (purchase == "" || purchase == null || purchase == undefined) {
-                            console.log("empty");
+                            //console.log("empty");
                             $('#purchaseReturnTable').hide();
                             $('#pMessage').show();
                         } else {
@@ -1110,7 +1167,7 @@ $(document).ready(function() {
                             $('#purchaseReturnTable').show();
 
                             if (parseInt(purchase.availableQty) != 0) {
-                                $('#pDate').text("Date: "+new Date());
+                                $('#pDate').text("Date: "+getFormatedDate(new Date()));
                                 $('#supplierName').text("Supplier Name: "+purchase.supplier.name);
                                 $('#purchaseModelName').text(purchase.model.productItem.productItemName);
                                 $('#purchaseModelCode').text(purchase.model.modelCode);

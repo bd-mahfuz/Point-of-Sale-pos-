@@ -231,8 +231,8 @@
                                     <div class="panel-heading purchase-heading">
                                         <h4 class="centerAlign" id="title-mac">Purchase return invoice details</h4>
                                         <div class="reareng-heading">
-                                            <p class="float-right">28 aug 2018</p>
-                                            <p class="float-left">Customer Name:</p>
+                                            <p class="float-right" id="mDate">28 aug 2018</p>
+                                            <p class="float-left" id="scName">Customer Name:</p>
                                         </div>
 
                                     </div>
@@ -247,7 +247,7 @@
                                                 <th>Model Code</th>
                                                 <th>Av. Qty</th>
                                                 <th>Rate</th>
-                                                <th>Return Qty</th>
+                                                <th>Action</th>
                                             </tr>
 
                                             <tr>
@@ -257,9 +257,7 @@
                                                 <td id="mAvQty"></td>
                                                 <td id="mRate"></td>
                                                 <td>
-                                                    <form id="return-form-withMac" onclick="return preventToSubmit()">
-
-                                                        <input type="number" id="mReturnQty" name="returnQty" class="form-control input-custom" placeholder="return qty"/>
+                                                    <form id="return-form-withMac">
                                                         <button type="button" id="returnMacBtn" class="btn btn-primary btn-xs btn-custom" data-toggle="modal" data-target="#macModal">
                                                             Submit
                                                         </button>
@@ -335,8 +333,8 @@
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-                        <div class="modal-body">
-                            Are you want to return the Purchase!
+                        <div class="modal-body" id="macModalMessage">
+                            Are you want to return the Product!
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

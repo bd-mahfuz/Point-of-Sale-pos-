@@ -1,7 +1,5 @@
 package com.pos.serviceImpl;
 
-import com.pos.dao.ReturnSellDao;
-import com.pos.dao.SalesInvoiceDao;
 import com.pos.daoImpl.ReturnSellDaoImpl;
 import com.pos.dto.*;
 import com.pos.service.*;
@@ -24,7 +22,7 @@ public class ReturnSellServiceImpl extends ReturnSellDaoImpl implements ReturnSe
     private MacListService macListService;
 
     @Autowired
-    private SalesInvoiceDao salesInvoiceDao;
+    private SalesInvoiceService salesInvoiceService;
 
     @Override
     public boolean returnSell(SalesInvoice salesInvoice, int returnQuantity) {
@@ -32,7 +30,7 @@ public class ReturnSellServiceImpl extends ReturnSellDaoImpl implements ReturnSe
         int currentQty = salesInvoice.getAvailableQty();
         salesInvoice.setAvailableQty((currentQty - returnQuantity));
         salesInvoice.setMacLists(null);
-        boolean isSellUpdate = salesInvoiceDao.update(salesInvoice);
+        boolean isSellUpdate = salesInvoiceService.updateSalesInvoice(salesInvoice);
 
         ItemModel itemModel = itemModelService.getItemModel(salesInvoice.getModel().getId());
         //returning the quantity
@@ -88,4 +86,46 @@ public class ReturnSellServiceImpl extends ReturnSellDaoImpl implements ReturnSe
         return false;
     }
 
+    @Override
+    public boolean returnSell(String macId) {
+        MacList macList = macListService.getByMacId(macId);
+
+        // updating itemModel
+        ItemModel itemModel = macList.getItemModel();
+        itemModel.setQuantity(itemModel.getQuantity() + 1);
+        boolean isUpdatedItemModel = itemModelService.updateItemModel(itemModel);
+
+        // updating purchase
+        Purchase purchase = macList.getPurchase();
+        purchase.setAvailableQty(purchase.getAvailableQty() + 1);
+        boolean isPurchaseUpdate = purchaseService.updatePurchase(purchase);
+
+
+        SalesInvoice salesInvoice = macList.getSalesInvoice();
+
+        // add the return info into sellReturn table
+        ReturnSell returnSell = new ReturnSell();
+        returnSell.setReturnQty(1);
+        returnSell.setAvailableQty(salesInvoice.getAvailableQty());
+        returnSell.setDate(new Date());
+        returnSell.setSalesInvoice(salesInvoice);
+
+        boolean isAdded = add(returnSell);
+
+        // updating salesInvoice
+        salesInvoice.setAvailableQty(salesInvoice.getAvailableQty() + 1);
+        boolean isSellUpdate = salesInvoiceService.updateSalesInvoice(salesInvoice);
+
+
+        macList.setSalesInvoice(null);
+        macList.setSellStatus("Unsold");
+        boolean isMacUpdate = macListService.update(macList);
+
+        if (isUpdatedItemModel && isPurchaseUpdate && isAdded && isSellUpdate && isMacUpdate) {
+            return true;
+        }
+
+        return false;
+
+    }
 }

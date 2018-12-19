@@ -107,6 +107,35 @@ public class ReturnController {
         return macList;
     }
 
+    @RequestMapping(value = "/user/return-purchase/{macId}")
+    public String returnPurchaseByMac(@PathVariable("macId") String macId) {
+        boolean isReturned = returnPurchaseService.returnPurchase(macId);
+        String message = "";
+        if (isReturned) {
+            message = "Item return successfully";
+        } else {
+            message = "Item return failed";
+        }
+
+        return "redirect:/user/return?message="+message;
+    }
+
+    @RequestMapping(value = "/user/return-sell/{macId}")
+    public String returnSellByMac(@PathVariable("macId") String macId) {
+        boolean isReturned = returnSellService.returnSell(macId);
+        String message = "";
+        if (isReturned) {
+            message = "Item return successfully";
+        } else {
+            message = "Item return failed";
+        }
+
+        return "redirect:/user/return?message="+message;
+    }
+
+
+
+
 
 
 

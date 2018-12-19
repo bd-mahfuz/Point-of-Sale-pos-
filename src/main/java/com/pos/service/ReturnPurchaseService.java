@@ -7,7 +7,7 @@ public interface ReturnPurchaseService extends ReturnPurchaseDao{
 
     boolean returnPurchase(Purchase purchase, int returnQty);
 
-
+    boolean returnPurchase(String macId);
 
 
 }
