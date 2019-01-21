@@ -5,13 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2e24ca7c-2002-40ab-8dea-372a19d6c2f7" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/pos/controller/ReturnController.java" afterPath="$PROJECT_DIR$/src/main/java/com/pos/controller/ReturnController.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/pos/service/ReturnPurchaseService.java" afterPath="$PROJECT_DIR$/src/main/java/com/pos/service/ReturnPurchaseService.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/pos/service/ReturnSellService.java" afterPath="$PROJECT_DIR$/src/main/java/com/pos/service/ReturnSellService.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/pos/serviceImpl/ReturnPurchaseServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/pos/serviceImpl/ReturnPurchaseServiceImpl.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/pos/serviceImpl/ReturnSellServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/pos/serviceImpl/ReturnSellServiceImpl.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/custom.js" afterPath="$PROJECT_DIR$/src/main/resources/static/js/custom.js" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/fragments/return.html" afterPath="$PROJECT_DIR$/src/main/resources/templates/fragments/return.html" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/pos/controller/PaymentController.java" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/login.html" afterPath="$PROJECT_DIR$/src/main/resources/templates/login.html" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -38,43 +34,61 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="ItemModelPriceDaoImpl.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/pos/daoImpl/ItemModelPriceDaoImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="80">
-              <caret line="13" column="15" lean-forward="true" selection-start-line="13" selection-start-column="15" selection-end-line="13" selection-end-column="15" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="custom.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/custom.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="371">
-              <caret line="1078" column="99" lean-forward="true" selection-start-line="1078" selection-start-column="77" selection-end-line="1078" selection-end-column="99" />
-              <folding>
-                <marker date="1545213459463" expanded="true" signature="1413:1430" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="MacList.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/pos/dto/MacList.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-223">
-              <caret line="22" column="0" lean-forward="true" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+            <state relative-caret-position="396">
+              <caret line="22" column="0" lean-forward="false" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ReturnController.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ReturnController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/pos/controller/ReturnController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-249">
-              <caret line="120" column="5" lean-forward="true" selection-start-line="120" selection-start-column="5" selection-end-line="120" selection-end-column="5" />
+            <state relative-caret-position="792">
+              <caret line="44" column="38" lean-forward="false" selection-start-line="44" selection-start-column="24" selection-end-line="44" selection-end-column="38" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PaymentController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/pos/controller/PaymentController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="126">
+              <caret line="7" column="0" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UserService.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/pos/service/UserService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="180">
+              <caret line="12" column="20" lean-forward="false" selection-start-line="12" selection-start-column="20" selection-end-line="12" selection-end-column="20" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="login.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/login.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="494">
+              <caret line="56" column="29" lean-forward="true" selection-start-line="56" selection-start-column="29" selection-end-line="56" selection-end-column="29" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="576">
+              <caret line="32" column="25" lean-forward="false" selection-start-line="32" selection-start-column="25" selection-end-line="32" selection-end-column="25" />
               <folding />
             </state>
           </provider>
@@ -83,8 +97,8 @@
       <file leaf-file-name="ReturnPurchaseServiceImpl.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/pos/serviceImpl/ReturnPurchaseServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="417">
-              <caret line="82" column="0" lean-forward="true" selection-start-line="82" selection-start-column="0" selection-end-line="82" selection-end-column="0" />
+            <state relative-caret-position="1242">
+              <caret line="82" column="0" lean-forward="false" selection-start-line="82" selection-start-column="0" selection-end-line="82" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -93,7 +107,7 @@
       <file leaf-file-name="ReturnSellServiceImpl.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/pos/serviceImpl/ReturnSellServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="257">
+            <state relative-caret-position="2052">
               <caret line="121" column="53" lean-forward="false" selection-start-line="121" selection-start-column="53" selection-end-line="121" selection-end-column="53" />
               <folding />
             </state>
@@ -103,18 +117,8 @@
       <file leaf-file-name="ReturnSellService.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/pos/service/ReturnSellService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="140">
+            <state relative-caret-position="126">
               <caret line="8" column="37" lean-forward="false" selection-start-line="8" selection-start-column="37" selection-end-line="8" selection-end-column="37" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SupplierDaoImpl.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/pos/daoImpl/SupplierDaoImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="260">
-              <caret line="23" column="50" lean-forward="false" selection-start-line="23" selection-start-column="8" selection-end-line="23" selection-end-column="50" />
               <folding />
             </state>
           </provider>
@@ -123,7 +127,7 @@
       <file leaf-file-name="UserDaoImpl.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/pos/daoImpl/UserDaoImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-669">
+            <state relative-caret-position="270">
               <caret line="23" column="27" lean-forward="false" selection-start-line="23" selection-start-column="27" selection-end-line="23" selection-end-column="27" />
               <folding />
             </state>
@@ -160,8 +164,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/resources/templates/fragments/salesInvoice.html" />
-        <option value="$PROJECT_DIR$/src/main/resources/static/js/customValidator.js" />
         <option value="$PROJECT_DIR$/src/main/java/com/pos/service/ReturnProductService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/pos/serviceImpl/ReturnProductServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/pos/controller/PurchaseController.java" />
@@ -211,6 +213,8 @@
         <option value="$PROJECT_DIR$/src/main/java/com/pos/serviceImpl/ReturnSellServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/pos/serviceImpl/ReturnPurchaseServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/pos/controller/ReturnController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/pos/controller/PaymentController.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/login.html" />
       </list>
     </option>
   </component>
@@ -394,7 +398,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -514,17 +519,12 @@
               <item name="templates" type="462c0819:PsiDirectoryNode" />
               <item name="fragments" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="pos-spring-boot" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scratches" />
       <pane id="AndroidView" />
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -937,7 +937,12 @@
       <workItem from="1545011797790" duration="11028000" />
       <workItem from="1545116397351" duration="2028000" />
       <workItem from="1545142373878" duration="6685000" />
-      <workItem from="1545185057171" duration="18094000" />
+      <workItem from="1545185057171" duration="18358000" />
+      <workItem from="1545275014906" duration="849000" />
+      <workItem from="1545383539326" duration="598000" />
+      <workItem from="1545400168808" duration="894000" />
+      <workItem from="1545579883247" duration="1204000" />
+      <workItem from="1548086805253" duration="1557000" />
     </task>
     <task id="LOCAL-00001" summary="Address class is modified.">
       <created>1539471602502</created>
@@ -982,7 +987,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="654943000" />
+    <option name="totallyTimeSpent" value="660309000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -994,38 +999,37 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="4" y="-4" width="1368" height="780" extended-state="6" />
-    <editor active="true" />
+    <frame x="65" y="-4" width="1301" height="772" extended-state="6" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5533662" sideWeight="0.5030441" order="6" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32852808" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32954547" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.41205212" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32840723" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32410422" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32840723" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5533662" sideWeight="0.5030441" order="6" side_tool="true" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32852808" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3281493" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.5303266" sideWeight="0.49695587" order="12" side_tool="false" content_ui="tabs" x="22" y="181" width="1320" height="353" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5303266" sideWeight="0.49695587" order="12" side_tool="false" content_ui="tabs" x="22" y="181" width="1320" height="353" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32736155" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3281493" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3060606" sideWeight="0.49019608" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3281493" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33864543" sideWeight="0.49019608" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2572079" sideWeight="0.50980395" order="5" side_tool="true" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32954547" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.41205212" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32410422" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3294509" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
@@ -1051,34 +1055,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/pos/ItemModelPriceTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="23" column="13" lean-forward="false" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/pos/serviceImpl/SalesInvoiceServiceimpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="99" column="0" lean-forward="false" selection-start-line="99" selection-start-column="0" selection-end-line="99" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/editCustomer.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="12" column="54" lean-forward="false" selection-start-line="12" selection-start-column="54" selection-end-line="12" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/pos/dao/ReturnPurchaseDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="10" column="15" lean-forward="false" selection-start-line="10" selection-start-column="15" selection-end-line="10" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/pos/dao/ReturnSellDao.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
@@ -1097,7 +1073,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1360">
           <caret line="68" column="43" lean-forward="false" selection-start-line="68" selection-start-column="43" selection-end-line="68" selection-end-column="43" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1105,15 +1080,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="160">
           <caret line="8" column="36" lean-forward="false" selection-start-line="8" selection-start-column="36" selection-end-line="8" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="640">
-          <caret line="32" column="25" lean-forward="false" selection-start-line="32" selection-start-column="25" selection-end-line="32" selection-end-column="25" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1121,7 +1087,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="800">
           <caret line="52" column="41" lean-forward="false" selection-start-line="52" selection-start-column="41" selection-end-line="52" selection-end-column="41" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1144,7 +1109,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="80">
           <caret line="7" column="17" lean-forward="false" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1152,12 +1116,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="140">
           <caret line="14" column="4" lean-forward="false" selection-start-line="14" selection-start-column="4" selection-end-line="15" selection-end-column="25" />
-          <folding>
-            <element signature="e#1264#1265#0" expanded="false" />
-            <element signature="e#1286#1287#0" expanded="false" />
-            <element signature="e#1328#1329#0" expanded="false" />
-            <element signature="e#1359#1360#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1165,12 +1123,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="391">
           <caret line="30" column="5" lean-forward="true" selection-start-line="30" selection-start-column="5" selection-end-line="30" selection-end-column="5" />
-          <folding>
-            <element signature="e#715#716#0" expanded="false" />
-            <element signature="e#746#747#0" expanded="false" />
-            <element signature="e#791#792#0" expanded="false" />
-            <element signature="e#831#832#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1178,12 +1130,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="420">
           <caret line="21" column="5" lean-forward="true" selection-start-line="13" selection-start-column="4" selection-end-line="21" selection-end-column="5" />
-          <folding>
-            <element signature="e#360#361#0" expanded="false" />
-            <element signature="e#391#392#0" expanded="false" />
-            <element signature="e#436#437#0" expanded="false" />
-            <element signature="e#476#477#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1191,12 +1137,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="420">
           <caret line="41" column="5" lean-forward="false" selection-start-line="41" selection-start-column="5" selection-end-line="41" selection-end-column="5" />
-          <folding>
-            <element signature="e#857#858#0" expanded="false" />
-            <element signature="e#879#880#0" expanded="false" />
-            <element signature="e#921#922#0" expanded="false" />
-            <element signature="e#952#953#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1204,12 +1144,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="480">
           <caret line="25" column="5" lean-forward="false" selection-start-line="25" selection-start-column="5" selection-end-line="25" selection-end-column="5" />
-          <folding>
-            <element signature="e#421#422#0" expanded="false" />
-            <element signature="e#443#444#0" expanded="false" />
-            <element signature="e#485#486#0" expanded="false" />
-            <element signature="e#516#517#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1217,12 +1151,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="523">
           <caret line="32" column="5" lean-forward="false" selection-start-line="32" selection-start-column="5" selection-end-line="32" selection-end-column="5" />
-          <folding>
-            <element signature="e#581#582#0" expanded="false" />
-            <element signature="e#612#613#0" expanded="false" />
-            <element signature="e#657#658#0" expanded="false" />
-            <element signature="e#697#698#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1230,12 +1158,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="396">
           <caret line="31" column="5" lean-forward="false" selection-start-line="31" selection-start-column="5" selection-end-line="31" selection-end-column="5" />
-          <folding>
-            <element signature="e#597#598#0" expanded="false" />
-            <element signature="e#628#629#0" expanded="false" />
-            <element signature="e#673#674#0" expanded="false" />
-            <element signature="e#713#714#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1243,12 +1165,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="280">
           <caret line="37" column="5" lean-forward="false" selection-start-line="37" selection-start-column="5" selection-end-line="37" selection-end-column="5" />
-          <folding>
-            <element signature="e#681#682#0" expanded="false" />
-            <element signature="e#703#704#0" expanded="false" />
-            <element signature="e#745#746#0" expanded="false" />
-            <element signature="e#776#777#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1256,12 +1172,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="291">
           <caret line="26" column="24" lean-forward="true" selection-start-line="26" selection-start-column="24" selection-end-line="26" selection-end-column="24" />
-          <folding>
-            <element signature="e#829#830#0" expanded="false" />
-            <element signature="e#860#861#0" expanded="false" />
-            <element signature="e#905#906#0" expanded="false" />
-            <element signature="e#945#946#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1269,7 +1179,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="100">
           <caret line="15" column="13" lean-forward="false" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1277,7 +1186,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="100">
           <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1285,7 +1193,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
           <caret line="13" column="13" lean-forward="false" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1293,7 +1200,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="100">
           <caret line="15" column="13" lean-forward="false" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1301,9 +1207,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="220">
           <caret line="17" column="51" lean-forward="false" selection-start-line="17" selection-start-column="51" selection-end-line="17" selection-end-column="51" />
-          <folding>
-            <element signature="e#502#503#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1311,7 +1214,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="260">
           <caret line="21" column="51" lean-forward="true" selection-start-line="21" selection-start-column="8" selection-end-line="21" selection-end-column="51" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1319,11 +1221,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
           <caret line="19" column="69" lean-forward="true" selection-start-line="19" selection-start-column="69" selection-end-line="19" selection-end-column="69" />
-          <folding>
-            <element signature="e#636#637#0" expanded="false" />
-            <element signature="e#1048#1049#0" expanded="false" />
-            <element signature="e#1097#1098#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1331,7 +1228,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="140">
           <caret line="26" column="0" lean-forward="true" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1339,7 +1235,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="280">
           <caret line="21" column="8" lean-forward="false" selection-start-line="21" selection-start-column="8" selection-end-line="21" selection-end-column="49" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1347,7 +1242,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="260">
           <caret line="22" column="53" lean-forward="false" selection-start-line="22" selection-start-column="8" selection-end-line="22" selection-end-column="53" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1355,7 +1249,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="260">
           <caret line="21" column="50" lean-forward="false" selection-start-line="21" selection-start-column="8" selection-end-line="21" selection-end-column="50" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1363,7 +1256,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="260">
           <caret line="20" column="52" lean-forward="false" selection-start-line="20" selection-start-column="8" selection-end-line="20" selection-end-column="52" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1371,7 +1263,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="260">
           <caret line="21" column="54" lean-forward="false" selection-start-line="21" selection-start-column="8" selection-end-line="21" selection-end-column="54" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1379,7 +1270,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="260">
           <caret line="23" column="50" lean-forward="false" selection-start-line="23" selection-start-column="8" selection-end-line="23" selection-end-column="50" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1387,15 +1277,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="100">
           <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/pos/daoImpl/ItemModelPriceDaoImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
-          <caret line="13" column="15" lean-forward="true" selection-start-line="13" selection-start-column="15" selection-end-line="13" selection-end-column="15" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1403,7 +1284,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="131">
           <caret line="18" column="28" lean-forward="true" selection-start-line="18" selection-start-column="28" selection-end-line="18" selection-end-column="28" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1411,7 +1291,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="671">
           <caret line="50" column="5" lean-forward="false" selection-start-line="50" selection-start-column="5" selection-end-line="50" selection-end-column="5" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1419,25 +1298,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-83">
           <caret line="246" column="50" lean-forward="true" selection-start-line="246" selection-start-column="50" selection-end-line="246" selection-end-column="50" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/pos/dto/MacList.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-223">
-          <caret line="22" column="0" lean-forward="true" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/custom.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="371">
-          <caret line="1078" column="99" lean-forward="true" selection-start-line="1078" selection-start-column="77" selection-end-line="1078" selection-end-column="99" />
-          <folding>
-            <marker date="1545213459463" expanded="true" signature="1413:1430" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1445,7 +1305,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
           <caret line="22" column="44" lean-forward="false" selection-start-line="22" selection-start-column="44" selection-end-line="22" selection-end-column="44" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1453,23 +1312,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="280">
           <caret line="42" column="55" lean-forward="false" selection-start-line="42" selection-start-column="55" selection-end-line="42" selection-end-column="55" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/pos/daoImpl/UserDaoImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-669">
-          <caret line="23" column="27" lean-forward="false" selection-start-line="23" selection-start-column="27" selection-end-line="23" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/pos/service/ReturnSellService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="8" column="37" lean-forward="false" selection-start-line="8" selection-start-column="37" selection-end-line="8" selection-end-column="37" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1477,30 +1319,111 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="160">
           <caret line="9" column="39" lean-forward="false" selection-start-line="9" selection-start-column="39" selection-end-line="9" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/pos/daoImpl/ItemModelPriceDaoImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="13" column="15" lean-forward="false" selection-start-line="13" selection-start-column="15" selection-end-line="13" selection-end-column="15" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/pos/serviceImpl/ReturnSellServiceImpl.java">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/custom.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="257">
-          <caret line="121" column="53" lean-forward="false" selection-start-line="121" selection-start-column="53" selection-end-line="121" selection-end-column="53" />
-          <folding />
+        <state relative-caret-position="19404">
+          <caret line="1078" column="99" lean-forward="false" selection-start-line="1078" selection-start-column="77" selection-end-line="1078" selection-end-column="99" />
+          <folding>
+            <marker date="1545213459463" expanded="true" signature="1413:1430" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/pos/serviceImpl/ReturnPurchaseServiceImpl.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/pos/dto/MacList.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="417">
-          <caret line="82" column="0" lean-forward="true" selection-start-line="82" selection-start-column="0" selection-end-line="82" selection-end-column="0" />
+        <state relative-caret-position="396">
+          <caret line="22" column="0" lean-forward="false" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/pos/controller/ReturnController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-249">
-          <caret line="120" column="5" lean-forward="true" selection-start-line="120" selection-start-column="5" selection-end-line="120" selection-end-column="5" />
+        <state relative-caret-position="792">
+          <caret line="44" column="38" lean-forward="false" selection-start-line="44" selection-start-column="24" selection-end-line="44" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/pos/serviceImpl/ReturnPurchaseServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1242">
+          <caret line="82" column="0" lean-forward="false" selection-start-line="82" selection-start-column="0" selection-end-line="82" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/pos/serviceImpl/ReturnSellServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2052">
+          <caret line="121" column="53" lean-forward="false" selection-start-line="121" selection-start-column="53" selection-end-line="121" selection-end-column="53" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/pos/service/ReturnSellService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="8" column="37" lean-forward="false" selection-start-line="8" selection-start-column="37" selection-end-line="8" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/pos/daoImpl/UserDaoImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="23" column="27" lean-forward="false" selection-start-line="23" selection-start-column="27" selection-end-line="23" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/pos/service/TestService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="19" column="13" lean-forward="true" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/pos/controller/PaymentController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="7" column="0" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/pos/service/UserService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="20" lean-forward="false" selection-start-line="12" selection-start-column="20" selection-end-line="12" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="576">
+          <caret line="32" column="25" lean-forward="false" selection-start-line="32" selection-start-column="25" selection-end-line="32" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/login.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="494">
+          <caret line="56" column="29" lean-forward="true" selection-start-line="56" selection-start-column="29" selection-end-line="56" selection-end-column="29" />
           <folding />
         </state>
       </provider>
@@ -1563,6 +1486,18 @@
               <list>
                 <option value="0.2" />
                 <option value="0.6" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectJDKs.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
               </list>
             </option>
           </splitter-proportions>
